@@ -1,0 +1,96 @@
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block" style="background-image: url('/images/img2.jpg');"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Edit Employe</h1>
+                            </div>
+                            <form class="user" method="post" accept="/editEmployee">
+                                <!-- id -->
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="empId" name="empId"
+                                        value="<%= typeof empId !='undefined'? empId : '' %>" placeholder="ID ...">
+                                </div>
+                                <!-- name -->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="firstName"
+                                            placeholder="First Name ..." name="firstName"
+                                            value="<%= typeof firstName !='undefined'? firstName : '' %>">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="lastName"
+                                            placeholder="Last Name ..." name="lastName"
+                                            value="<%= typeof lastName !='undefined'? lastName : '' %>">
+                                    </div>
+                                </div>
+
+
+                                <!-- dep -->
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="Department"
+                                        name="Department"
+                                        value="<%= typeof Department !='undefined'? Department : '' %>"
+                                        placeholder="Department ...">
+                                </div>
+                                <!-- birthDate -->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="date" class="form-control form-control-user" id="birthDate"
+                                            name="birthDate"
+                                            value="<%= typeof birthDate !='undefined'? birthDate : '' %>">
+                                    </div>
+                                    <!-- phone Number -->
+                                    <div class="col-sm-6">
+                                        <input type="tel" class="form-control form-control-user" id="phoneNumber"
+                                            name="phoneNumber"
+                                            value="<%= typeof phoneNumber !='undefined'? phoneNumber : '' %>"
+                                            placeholder="Tel ...">
+                                    </div>
+                                </div>
+
+
+                                <!-- position -->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="Position"
+                                            placeholder="Position" name="Position"
+                                            value="<%= typeof Position !='undefined'? Position : '' %>">
+                                    </div>
+                                    <!-- salary -->
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="Salary"
+                                            placeholder="Salary" name="Salary"
+                                            value="<%= typeof Salary !='undefined'? Salary : '' %>">
+                                    </div>
+                                </div>
+
+
+                                <!-- mail adress -->
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        name="Email" value="<%= typeof Email !='undefined'? Email : '' %>"
+                                        placeholder="Email ...">
+                                </div>
+                                <!-- salary -->
+                                <div class="form-group ">
+
+                                </div>
+                                <a href=" #" class="btn btn-primary btn-user btn-block">
+                                    Add
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
