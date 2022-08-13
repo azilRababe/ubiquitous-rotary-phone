@@ -1,0 +1,54 @@
+<%- include('../partials/header') %> <br>
+    <div class="container">
+        <h3 class="text-center">New Employee</h3>
+        <form action="/Employee" method="post" style="max-width: 75%;margin:0 auto">
+            <div class="row">
+                <div class="col">
+                    <input class="form-control" placeholder="Id.." type="text" name="employeeId"> <br>
+                    <input class="form-control" placeholder="Firstname.." type="text" name="Firstname"> <br>
+                    <input class="form-control" placeholder="Lastname.." type="text" name="Lastname"> <br>
+                    <input class="form-control" placeholder="username.." type="text" name="username" required> <br>
+                    <input class="form-control" placeholder="Email.." type="Email" name="Email" required> <br>
+                    <input class="form-control" placeholder="Phone..." type="tel" name="Phone"><br>
+                    <input class="form-control" placeholder="" type="date" name="birthDate"> <br>
+                </div>
+                <div class="col">
+                    <select name="bloodType" class="form-select">
+                        <option value="Q" selected disabled>What is your blood type?</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B-">B-</option>
+                        <option value="B+">B+</option>
+                        <option value="O-">O-</option>
+                        <option value="O+">O+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="AB+">AB+</option>
+                    </select> <br>
+                    <select name="driverLicence" id="" class="form-select">
+                        <option value="Q" selected disabled>Do you have a driver Licence?</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select> <br>
+                    <select name="Gender" id="" class="form-select">
+                        <option value="" selected disabled>Select Your Gender ...</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select> <br>
+                    <select name="userRole" id="" class="form-select" required>
+                        <option value="" disabled selected>Employee Role ...</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Admin">Admin</option>
+                        <option value="HOD">HOD</option>
+                        <option value="HR">HR</option>
+                    </select> <br>
+                    <input class="form-control" placeholder="Nationality.." type="text" name="Nationality"> <br>
+                    <input class="form-control" placeholder="Location.." type="text" name="Location"> <br>
+                </div>
+            </div>
+
+            <input class="form-control" placeholder="password.." type="password" name="password" required> <br>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Add</button>
+
+        </form>
+    </div>

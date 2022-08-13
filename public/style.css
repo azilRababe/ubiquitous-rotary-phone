@@ -1,0 +1,15 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Uchen', serif;
+    background-color: #e9ecef;
+    font-size: 1rem;
+
+}
+
+.inlineBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}

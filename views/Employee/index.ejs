@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+    <br>
+    <%- include('../partials/messages') %>
+        <div class="container">
+            <div class="d-flex gap-1">
+                <h2>Employees</h2>
+                <a href="/Employee/new">
+                    <button class="btn btn-light">New</button>
+                </a>
+            </div>
+            <br>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Fullname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let Emp of Employee){ %>
+                        <tr>
+                            <td>
+                                <%= `${Emp.Firstname} ${Emp.Lastname}` %>
+                            </td>
+                            <td>
+                                <%= Emp.Email %>
+                            </td>
+                            <td>
+                                <%= Emp.username %>
+                            </td>
+                            <td>
+                                <%= Emp.userRole %>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start gap-1">
+                                    <form action="/Employee/<%= Emp._id%>?_method=DELETE" method="post">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                    <a href="/Employee/<%= Emp._id %>/edit" class="btn btn-success">Update</a>
+                                    <a href="/Employee/<%= Emp._id %> " class="btn btn-primary">More</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+        </div>

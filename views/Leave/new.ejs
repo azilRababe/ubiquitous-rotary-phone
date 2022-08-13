@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+    <br>
+    <div class="container">
+        <h3 class="text-center">Add a Leave</h3>
+        <form action="/Leave" method="post" style="max-width: 75%;margin:0 auto">
+            <div class="row">
+                <div class="col">
+                    <div class="row mb-3">
+                        <label for="employeeId" class="col-sm-2 col-form-label">Id:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="employeeId" placeholder="Enter Your ID..."
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="leaveStart" class="col-sm-2 col-form-label">Start Date:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" name="leaveStart" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="leaveEnd" class="col-sm-2 col-form-label">End Date:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" name="leaveEnd" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="leaveEnd" class="col-sm-2 col-form-label">Status:</label>
+                        <div class="col-sm-10">
+                            <select name="leaveStatus" class="form-select" id="">
+                                <option value="" selected disabled></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="attachment" class="col-sm-2 col-form-label">Proof :</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" placeholder="" type="file" name="attachment">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Add</button>
+        </form>
+    </div>

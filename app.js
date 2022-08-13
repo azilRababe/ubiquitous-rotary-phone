@@ -1,46 +1,56 @@
-const { default: mongoose } = require('mongoose');
-
-const express = require('express'),
+const { default: mongoose } = require('mongoose'),
+    express = require('express'),
     app = express(),
     dotenv = require('dotenv').config(),
     bodyParser = require('body-parser'),
     flash = require('connect-flash'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
-    expressLayouts = require('express-ejs-layouts');
-// connect db
-const db = require('./config/db')
+    moment = require('moment'),
+    expressLayouts = require('express-ejs-layouts'),
+    // User = require('./models/Users'),
+    methodOverride = require('method-override'),
+    // connect db
+    db = require('./config/db');
 
+
+app.use(methodOverride('_method'));
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: true }))
-
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-// app.use(express.static('public'))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(expressLayouts)
 app.use(cookieParser())
 app.set('trust proxy', 1)
 app.use(session({
     secret: process.env.SECRET,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: { secure: true }
 }))
+
+// connect flash
 app.use(flash());
 
 // GLOBAL VARIABLES
-
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    res.locals.moment = moment //date format
+    next()
+})
 
 //ROUTES
-app.use('/', require('./routes/index'))
-app.use('/admin', require('./routes/adminRoutes'))
-app.use('/employee', require('./routes/employeeRoutes'))
-app.use('/manager', require('./routes/managerRoutes'))
-app.use('/users', require('./routes/userRoutes'))
+app.use('/Employee', require('./routes/Employee'))
+app.use('/Department', require('./routes/Department'))
+app.use('/Task', require('./routes/Task'))
+app.use('/Leave', require('./routes/Leave'))
+app.use('/Project', require('./routes/Project'))
 
 
-const port = process.env.PORT || 3000;
+
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`server listening on ${port}`)
 })

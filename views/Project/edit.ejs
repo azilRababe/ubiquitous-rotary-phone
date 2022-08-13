@@ -1,0 +1,63 @@
+<%- include('../partials/header') %>
+    <br>
+    <div class="container">
+        <h3 class="text-center">Edit Project</h3>
+        <form action="/Project/<%= Project._id %>?_method=PUT" method="post" style="max-width: 75%;margin:0 auto">
+            <div class="row">
+                <div class="col">
+                    <div class="row mb-3">
+                        <label for="projectId" class="col-sm-2 col-form-label">Project Id:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="projectId" placeholder="Project Id..."
+                                value="<%= Project.projectId %> ">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="employeeId" class="col-sm-2 col-form-label">Employee Id:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="employeeId" placeholder="Employee Id..."
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="projectTitle" class="col-sm-2 col-form-label">Title:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="projectTitle"
+                                value="<%= Project.projectTitle %> ">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="projectStart" class="col-sm-2 col-form-label">Due Date:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" name="projectStart">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="projectEnd" class="col-sm-2 col-form-label">End Date:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" name="projectEnd">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="completetionStatus" class="col-sm-2 col-form-label">Status:</label>
+                        <div class="col-sm-10">
+                            <select name="completetionStatus" class="form-select" id="">
+                                <option value="" selected disabled></option>
+                                <option value="Upcoming">Upcoming</option>
+                                <option value="in Progress">In Progress</option>
+                                <option value="Done">Done</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Edit</button>
+        </form>
+    </div>

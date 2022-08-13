@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+    <br>
+    <div class="container">
+        <%- include('../partials/messages') %>
+            <div class="row">
+                <div class="col">
+                    <b class="display-5">
+                        <%= `${Employee.Firstname} ${Employee.Lastname}` %>
+                    </b>
+                </div>
+                <div class="col">
+                    <b>ID:</b>
+                    <%= Employee.employeeId %> <br>
+                        <b>birthDate:</b>
+                        <%= moment().utc(Employee.birthDate).format('MMMM D, YYYY') %> <br>
+                            <b>Phone:</b>
+                            <%= Employee.Phone %> <br>
+                                <b>Email:</b>
+                                <%= Employee.Email %> <br>
+                                    <b>driver Licence :</b>
+                                    <%= Employee.driverLicence %> <br>
+                                        <b>Blood Type:</b>
+                                        <%= Employee.bloodType %> <br>
+                                            <b>Nationality:</b>
+                                            <%= Employee.Nationality %> <br>
+                                                <b>Gender:</b>
+                                                <%= Employee.Gender %> <br>
+                                                    <b>Location:</b>
+                                                    <%= Employee.Location %> <br>
+                                                        <b>Department:</b>
+                                                        <%= Employee.departmentName %> <br>
+                                                            <b>userRole:</b>
+                                                            <%= Employee.userRole %> <br>
+
+                </div>
+            </div>
+    </div>
+    </div>
