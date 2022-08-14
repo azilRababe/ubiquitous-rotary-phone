@@ -19,27 +19,29 @@ module.exports.createTask = async (req, res) => {
 }
 
 module.exports.showTask = async (req, res) => {
-    const Task = await Tasks.findById(req.params.id).populate('employeeId')
+    const Task = await Tasks.findById(req.params.id).populate('assignerId')
     if (!Task) {
         req.flash('error_msg', 'OPS! TASK NOT FOUND')
     }
     res.render('Task/Show', { Task })
 }
 
-module.exports.editForm = (req, res) => {
-    res.render('Task/edit')
+module.exports.editForm = async (req, res) => {
+    const { id } = req.params
+    const Task = await Tasks.findById({ _id: id })
+    res.render('Task/edit', { Task })
 }
 
 module.exports.updateTask = async (req, res) => {
-    const Task = await Tasks.findByIdAndUpdate(req.params.id, { ...req.body.Tasks }, (err, Task) => {
-        if (err) { res.send(err) }
-        req.flash('success_msg', 'GOT SOME CHANGES')
-        res.render('Task/Show', { Task })
-    })
+    const body = req.body
+    const Task = await Tasks.findByIdAndUpdate(req.params.id, body)
+    req.flash('success_msg', 'GOT SOME CHANGES')
+    res.render('Task/Show', { Task })
 }
 
 module.exports.deleteTask = async (req, res) => {
-    await Tasks.findOneAndDelete(req.params.id)
+    const { id } = req.params
+    await Tasks.findOneAndDelete({ _id: id })
     req.flash('success_msg', 'OMG! YOU JUST DELETED A TASK')
-    res.redirect('/Task/Show')
+    res.redirect('/Task')
 }

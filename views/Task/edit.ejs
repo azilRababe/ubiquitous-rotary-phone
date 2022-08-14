@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+    <br>
+    <div class="container">
+        <h3 class="text-center">Edit a Task</h3>
+        <form action="/Task/<%= Task._id %>?_method=PUT" method="post" style="max-width: 75%;margin:0 auto">
+            <div class="row">
+                <div class="col">
+                    <div class="row mb-3">
+                        <label for="taskId" class="col-sm-2 col-form-label">Id:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="taskId" placeholder="Task ID..."
+                                value="<%= Task.taskId %> " disabled>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="assignerId" class="col-sm-2 col-form-label">Assigner Id:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="assignerId" placeholder="Assiner Id...">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="startDate" class="col-sm-2 col-form-label">Start Date:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" name="startDate" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="dueDate" class="col-sm-2 col-form-label">Due Date:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="date" name="dueDate" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="Notes" class="col-sm-2 col-form-label">Notes:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="Notes" placeholder="Notes ..." required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="assignedTo" class="col-sm-2 col-form-label">Assigned To :</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" placeholder="" type="text" name="assignedTo">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="taskStatus" class="col-sm-2 col-form-label">Status:</label>
+                        <div class="col-sm-10">
+                            <select name="taskStatus" class="form-select" id="">
+                                <option value="" selected disabled></option>
+                                <option value="Upcoming">Upcoming</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Done">Done</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Edit</button>
+        </form>
+    </div>

@@ -24,8 +24,8 @@ module.exports.createLeave = async (req, res) => {
 }
 
 module.exports.updateLeave = async (req, res) => {
-    const { body } = req.body
-    const Leave = await Leaves.findByIdAndUpdate(req.params.id, { body })
+    const body = req.body
+    const Leave = await Leaves.findByIdAndUpdate(req.params.id, body)
     req.flash('success_msg', 'GOT SOME CHANGES')
     res.redirect('/Leave')
 }

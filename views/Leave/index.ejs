@@ -10,7 +10,7 @@
             </div>
 
             <br>
-            <table class="table table-hover">
+            <table class="table table-hover table-bordered border-light">
                 <thead>
                     <tr>
                         <th scope="col">Employee</th>
@@ -26,17 +26,17 @@
                     <% for(let Lv of Leave){ %>
                         <tr>
                             <td>
-                                <%= Lv.username %>
+                                <%= Lv.employeeId %>
                             </td>
 
                             <td>
-                                <%= moment(Lv.leaveStart).format('l')%>
+                                <%= moment(Lv.startDate).format('L')%>
                             </td>
                             <td>
-                                <%= moment(Lv.leaveEnd).format('l') %>
+                                <%= moment(Lv.dueDate).format('L') %>
                             </td>
                             <td>
-                                <%= moment(Lv.submissionDate).format('l') %>
+                                <%= moment(Lv.submissionDate).calendar() %>
                             </td>
                             <td>
                                 <%= Lv.leaveStatus %>

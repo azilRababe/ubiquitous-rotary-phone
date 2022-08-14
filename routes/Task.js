@@ -2,7 +2,7 @@
 const express = require('express'),
     router = express.Router(),
     Tasks = require('../models/Tasks'),
-    Task = require('../controllers/Taks');
+    Task = require('../controllers/Task');
 
 router.route('/')
     .get(Task.index)

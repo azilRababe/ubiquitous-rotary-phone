@@ -5,8 +5,8 @@ const Leaves = new Schema({
     leaveId: { type: String },
     employeeId: { type: Schema.Types.ObjectId, ref: 'Employees' },
     submissionDate: { type: Date, default: Date.now },
-    leaveStart: Date,
-    leaveEnd: Date,
+    startDate: Date,
+    dueDate: Date,
     leaveStatus: ['Yes', 'No'],
     attachment: String
 })
