@@ -2,7 +2,7 @@ const Tasks = require('../models/Tasks');
 
 
 module.exports.index = async (req, res) => {
-    const Task = await Tasks.find({}).populate('assignerId')
+    const Task = await Tasks.find({})
     res.render('Task/index', { Task })
 }
 
@@ -19,11 +19,14 @@ module.exports.createTask = async (req, res) => {
 }
 
 module.exports.showTask = async (req, res) => {
-    const Task = await Tasks.findById(req.params.id).populate('assignerId')
-    if (!Task) {
-        req.flash('error_msg', 'OPS! TASK NOT FOUND')
-    }
-    res.render('Task/Show', { Task })
+    const Task = await Tasks.findById(req.params.id)
+        .populate('assignerId', ['Firstname', 'Lastname'])
+        .populate('assignedTo', ['Firstname', 'Lastname'])
+        .exec((err, Task) => {
+            if (err) { req.flash('error', 'Something went wrong') }
+            res.render('Task/Show', { Task })
+        })
+
 }
 
 module.exports.editForm = async (req, res) => {

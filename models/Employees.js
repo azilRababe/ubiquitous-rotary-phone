@@ -2,26 +2,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Employees = new Schema({
-    employeeId: {
-        type: String,
-    },
+    employeeId: { type: String, unique: true },
     Phone: String,
-    Email: { type: String, unique: [true, "Email Already Exists"] },
+    Email: { type: String, unique: true },
     bloodType: String,
     Nationality: String,
     driverLicence: ['Yes', 'No'],
-    birthDate: String,
+    birthDate: Date,
     Gender: ['Male', 'Female', 'Other'],
     Location: String,
-    departmentId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Departments'
-    },
     Firstname: String,
     Lastname: String,
     username: String,
     password: String,
     userRole: ['Employee', 'HOD', 'Admin', 'HR'],
+    JD: String,
 })
 
 

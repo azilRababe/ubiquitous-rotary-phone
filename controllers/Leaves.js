@@ -1,10 +1,11 @@
 const Leaves = require('../models/Leaves');
 
 module.exports.index = async (req, res) => {
-    const Leave = await Leaves.find({}).populate({
-        path: 'employeeId', select: 'username'
-    })
-    res.render('Leave/index', { Leave })
+    const Leave = await Leaves.find({}).populate({ path: 'employeeId', select: ['Firstname', 'Lastname'] })
+        .exec((err, Leave) => {
+            if (err) { req.flash('error', 'Something went wrong') }
+            res.render('Leave/index', { Leave })
+        })
 }
 
 module.exports.renderNewForm = (req, res) => {
@@ -14,7 +15,7 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.createLeave = async (req, res) => {
     const body = req.body
     const Leave = new Leaves(body)
-    if (Leave.leaveEnd < Leave.leaveStart) {
+    if (Leave.dueDate < Leave.startDate) {
         req.flash('error', 'OPS! CANNOT PROCESS THIS DATE')
         return res.redirect('/Leave/new')
     }

@@ -2,7 +2,7 @@ const Projects = require('../models/Projects');
 
 
 module.exports.index = async (req, res) => {
-    const Project = await Projects.find({}).populate('employeeId')
+    const Project = await Projects.find({}).populate('employeeId', ['Firstname', 'Lastname'])
     res.render('Project/index', { Project })
 }
 
@@ -41,6 +41,6 @@ module.exports.editForm = async (req, res) => {
 
 module.exports.deleteProject = async (req, res) => {
     await Projects.findOneAndDelete({ _id: req.params.id })
-    req.flash('success_msg', 'OMG! YOU JUST FIRED AN Project')
+    req.flash('success_msg', 'Project deleted successfuly')
     res.redirect('/Project')
 }

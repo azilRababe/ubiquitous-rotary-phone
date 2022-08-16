@@ -3,7 +3,7 @@ const mongoose = require('mongoose'),
 
 const Projects = new Schema({
     projectId: { type: String, unique: true },
-    employeeId: { type: mongoose.Types.ObjectId, ref: 'Employees' },
+    employeeId: { type: [mongoose.Types.ObjectId], ref: 'Employees' },
     projectTitle: String,
     projectStart: Date,
     projectEnd: Date,

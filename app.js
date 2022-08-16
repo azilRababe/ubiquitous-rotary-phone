@@ -12,9 +12,10 @@ const { default: mongoose } = require('mongoose'),
     methodOverride = require('method-override'),
     // connect db
     db = require('./config/db');
-
+const path = require('path');
 
 app.use(methodOverride('_method'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,9 +25,8 @@ app.use(cookieParser())
 app.set('trust proxy', 1)
 app.use(session({
     secret: process.env.SECRET,
-    resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    resave: true
 }))
 
 // connect flash
@@ -42,12 +42,12 @@ app.use((req, res, next) => {
 })
 
 //ROUTES
+app.use('/', require('./routes/index'))
 app.use('/Employee', require('./routes/Employee'))
 app.use('/Department', require('./routes/Department'))
 app.use('/Task', require('./routes/Task'))
 app.use('/Leave', require('./routes/Leave'))
 app.use('/Project', require('./routes/Project'))
-
 
 
 const port = process.env.PORT || 8080;

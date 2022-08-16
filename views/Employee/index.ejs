@@ -1,13 +1,14 @@
 <%- include('../partials/header') %>
     <br>
-    <%- include('../partials/messages') %>
-        <div class="container">
-            <div class="d-flex gap-1">
-                <h2>Employees</h2>
-                <a href="/Employee/new">
-                    <button class="btn btn-light">New</button>
-                </a>
-            </div>
+
+    <div class="container">
+        <div class="d-flex gap-1">
+            <h2>Employees</h2>
+            <a href="/Employee/new">
+                <button class="btn btn-outline-primary"><i class="fa-solid fa-person-circle-plus"></i></button>
+            </a>
+        </div>
+        <%- include('../partials/messages') %>
             <br>
             <table class="table table-hover">
                 <thead>
@@ -48,4 +49,4 @@
                 </tbody>
             </table>
 
-        </div>
+    </div>

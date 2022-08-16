@@ -10,6 +10,7 @@ for (let i = 0; i < 10; i += 1) {
     let newDepartment = {
         departmentId: faker.random.alphaNumeric(5),
         departmentName: faker.commerce.department(),
+        depEmployees: faker.database.mongodbObjectId(),
         Description: faker.lorem.paragraph()
     };
     Departments.push(newDepartment);

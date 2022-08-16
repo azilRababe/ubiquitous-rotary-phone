@@ -5,6 +5,10 @@ const mongoose = require('mongoose'),
 const Departments = new schema({
     departmentId: { type: String, unique: true },
     departmentName: { type: String },
+    depEmployees: {
+        type: [schema.Types.ObjectId],
+        ref: 'Employees'
+    },
     Description: String
 })
 

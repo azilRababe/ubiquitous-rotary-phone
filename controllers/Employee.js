@@ -2,7 +2,7 @@ const Employees = require('../models/Employees'),
     bcrypt = require('bcryptjs');
 
 module.exports.index = async (req, res) => {
-    const Employee = await Employees.find({}).populate('departmentId')
+    const Employee = await Employees.find({})
     res.render('Employee/index', { Employee })
 }
 
@@ -21,7 +21,7 @@ module.exports.createEmployee = async (req, res) => {
 }
 
 module.exports.showEmployee = async (req, res) => {
-    const Employee = await Employees.findById({ _id: req.params.id }).populate('departmentId')
+    const Employee = await Employees.findById({ _id: req.params.id })
     if (!Employee) {
         req.flash('error_msg', 'OPS! EMPLOYEE NOT FOUND')
     }
@@ -43,6 +43,6 @@ module.exports.editForm = async (req, res) => {
 
 module.exports.deleteEmployee = async (req, res) => {
     await Employees.findOneAndDelete({ _id: req.params.id })
-    req.flash('success_msg', 'OMG! YOU JUST FIRED AN EMPLOYEE')
+    req.flash('error_msg', 'OMG! YOU JUST FIRED AN EMPLOYEE')
     res.redirect('/Employee')
 }

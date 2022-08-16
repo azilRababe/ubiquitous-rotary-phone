@@ -1,7 +1,8 @@
 const express = require('express'),
     router = express.Router(),
     Employees = require('../models/Employees'),
-    Employee = require('../controllers/Employee');
+    Employee = require('../controllers/Employee'),
+    ensureLoggedIn = require('connect-ensure-login');
 
 router.route('/')
     .get(Employee.index)

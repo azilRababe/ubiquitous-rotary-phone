@@ -1,6 +1,5 @@
 <% if(success_msg !='' ){ %>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success</strong>
         <%= success_msg %>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -8,7 +7,6 @@
 
         <% if(error_msg !='' ){ %>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Failed !!</strong>
                 <%= error_msg %>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -16,7 +14,6 @@
 
                 <% if(error !='' ){ %>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Warning!!</strong>
                         <%= error %>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
