@@ -13,8 +13,8 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Project Id</th>
-                        <th scope="col">Employee Id</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Employees</th>
                         <th scope="col">Title</th>
                         <th scope="col">Due Date</th>
                         <th scope="col">Deadline</th>
@@ -31,7 +31,10 @@
                             </td>
                             <% if(Pr.employeeId !='' ){ %>
                                 <td>
-                                    <%= Pr.employeeId%>
+                                    <% Pr.employeeId.forEach(e=>{%>
+                                        <%= `${e.Firstname} ${e.Lastname}`%>
+                                            <% }) %>
+
                                 </td>
                                 <% }else{ %>
                                     <td>
@@ -58,9 +61,11 @@
                                         <td>
                                             <div class="d-flex justify-content-start gap-1">
                                                 <form action="/Project/<%= Pr._id%>?_method=DELETE" method="post">
-                                                    <button class="btn btn-danger">Delete</button>
+                                                    <button class="btn btn-outline-danger"><i
+                                                            class="fa-solid fa-trash"></i></button>
                                                 </form>
-                                                <a href="/Project/<%= Pr._id %>/edit" class="btn btn-success">Update</a>
+                                                <a href="/Project/<%= Pr._id %>/edit" class="btn btn-outline-success"><i
+                                                        class="fa-solid fa-wrench"></i></a>
                                             </div>
                                         </td>
                         </tr>

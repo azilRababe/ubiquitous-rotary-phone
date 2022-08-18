@@ -20,8 +20,8 @@ module.exports.createTask = async (req, res) => {
 
 module.exports.showTask = async (req, res) => {
     const Task = await Tasks.findById(req.params.id)
-        .populate('assignerId', ['Firstname', 'Lastname'])
-        .populate('assignedTo', ['Firstname', 'Lastname'])
+        .populate({ path: 'assignerId', select: 'Firstname Lastname -_id' })
+        .populate({ path: 'assignedTo', select: 'Firstname Lastname -_id' })
         .exec((err, Task) => {
             if (err) { req.flash('error', 'Something went wrong') }
             res.render('Task/Show', { Task })

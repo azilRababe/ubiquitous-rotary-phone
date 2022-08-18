@@ -2,7 +2,7 @@ const Projects = require('../models/Projects');
 
 
 module.exports.index = async (req, res) => {
-    const Project = await Projects.find({}).populate('employeeId', ['Firstname', 'Lastname'])
+    const Project = await Projects.find({}).populate({ path: 'employeeId', select: 'Firstname Lastname -_id' })
     res.render('Project/index', { Project })
 }
 

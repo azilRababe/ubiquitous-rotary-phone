@@ -3,7 +3,7 @@ const monoogse = require('mongoose'),
 
 const Tasks = new Schema({
     taskId: { type: String, unique: true },
-    assignerId: { type: Schema.Types.ObjectId, ref: 'Employees' },
+    assignerId: { type: [Schema.Types.ObjectId], ref: 'Employees' },
     assignDate: { type: Date, Default: Date.now },
     startDate: Date,
     dueDate: Date,

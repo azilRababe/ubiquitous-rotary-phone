@@ -1,4 +1,5 @@
 const Employees = require('../models/Employees'),
+    passport = require('passport'),
     bcrypt = require('bcryptjs');
 
 module.exports.index = async (req, res) => {
@@ -12,12 +13,16 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createEmployee = async (req, res) => {
     const body = req.body
-    const Employee = new Employees(body)
-    const salt = await bcrypt.genSalt(10);
-    Employee.password = await bcrypt.hash(Employee.password, salt);
-    Employee.save()
-    req.flash('success_msg', 'OLE, A NEW EMPLOYEE ADDED TO THE TEAM')
-    res.redirect('/Employee')
+    Emp = new Employees(body);
+    Employees.register(Emp, req.body.password, (err, Employees) => {
+        if (err) {
+            req.flash('error_msg', 'Something went wrong')
+            return res.redirect('/Employee/new')
+        } else {
+            req.flash('success_msg', 'Employee has been added successfully')
+            res.redirect('/Employee')
+        }
+    });
 }
 
 module.exports.showEmployee = async (req, res) => {

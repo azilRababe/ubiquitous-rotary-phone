@@ -3,18 +3,19 @@ const express = require('express'),
     router = express.Router(),
     Tasks = require('../models/Tasks'),
     Task = require('../controllers/Task');
+const { isLoggedIn, isHR, isAdmin, isEmployee } = require('../middlewares/middleware')
 
 router.route('/')
-    .get(Task.index)
-    .post(Task.createTask)
+    .get(isLoggedIn, Task.index)
+    .post(isLoggedIn, Task.createTask)
 
-router.get('/new', Task.renderNewForm)
+router.get('/new', isLoggedIn, Task.renderNewForm)
 
 router.route('/:id')
-    .get(Task.showTask)
-    .put(Task.updateTask)
-    .delete(Task.deleteTask)
+    .get(isLoggedIn, Task.showTask)
+    .put(isLoggedIn, Task.updateTask)
+    .delete(isLoggedIn, Task.deleteTask)
 
-router.get('/:id/edit', Task.editForm)
+router.get('/:id/edit', isLoggedIn, Task.editForm)
 
 module.exports = router;

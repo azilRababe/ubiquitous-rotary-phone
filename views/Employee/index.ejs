@@ -38,10 +38,13 @@
                             <td>
                                 <div class="d-flex justify-content-start gap-1">
                                     <form action="/Employee/<%= Emp._id%>?_method=DELETE" method="post">
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-outline-danger"><i
+                                                class="fa-solid fa-trash"></i></button>
                                     </form>
-                                    <a href="/Employee/<%= Emp._id %>/edit" class="btn btn-success">Update</a>
-                                    <a href="/Employee/<%= Emp._id %> " class="btn btn-primary">More</a>
+                                    <a href="/Employee/<%= Emp._id %>/edit" class="btn btn-outline-success"><i
+                                            class="fa-solid fa-wrench"></i></a>
+                                    <a href="/Employee/<%= Emp._id %> " class="btn btn-outline-primary"><i
+                                            class="fa-solid fa-eye"></i></a>
                                 </div>
                             </td>
                         </tr>

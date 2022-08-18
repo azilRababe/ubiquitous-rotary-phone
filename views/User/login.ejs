@@ -1,8 +1,9 @@
 <div class="container h-50" style="max-width: 500px;">
     <div class="row h-100 justify-content-center align-items-center">
-        <h6 class="display-6 text-center">Welcome Back!</h6> <br>
-        <%- include('../partials/messages') %>
-            <form action="/login" method="post">
+        <h6 class="display-6 text-center">Welcome Back!</h6>
+
+        <form action="/login" method="post">
+            <%- include('../partials/messages') %>
                 <div class="row g-3">
                     <div class="col-12">
                         <input type="text" class="form-control form-control-lg" placeholder="Username ..." id="username"
@@ -16,7 +17,7 @@
                 <div class="d-grid gap-2">
                     <button class="btn btn-dark" type="submit">Login</button>
                 </div>
-            </form>
+        </form>
     </div>
 
 </div>

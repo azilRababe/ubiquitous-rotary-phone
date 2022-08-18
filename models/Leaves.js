@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Leaves = new Schema({
     leaveId: { type: String },
-    employeeId: { type: Schema.Types.ObjectId, ref: 'Employees' },
+    employeeId: { type: [Schema.Types.ObjectId], ref: 'Employees' },
     submissionDate: { type: Date, default: Date.now },
     startDate: Date,
     dueDate: Date,

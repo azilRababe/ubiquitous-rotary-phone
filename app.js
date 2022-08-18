@@ -8,11 +8,12 @@ const { default: mongoose } = require('mongoose'),
     session = require('express-session'),
     moment = require('moment'),
     expressLayouts = require('express-ejs-layouts'),
-    // User = require('./models/Users'),
     methodOverride = require('method-override'),
-    // connect db
-    db = require('./config/db');
-const path = require('path');
+    passport = require('passport'),
+    db = require('./config/db'),
+    path = require('path'),
+    Employee = require('./models/Employees'),
+    jwt = require('jsonwebtoken');
 
 app.use(methodOverride('_method'));
 app.set('views', path.join(__dirname, 'views'));
@@ -29,11 +30,22 @@ app.use(session({
     resave: true
 }))
 
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+passport.serializeUser(Employee.serializeUser());
+passport.deserializeUser(Employee.deserializeUser());
+
+const configPass = require('./config/passport')
+
 // connect flash
 app.use(flash());
 
 // GLOBAL VARIABLES
 app.use((req, res, next) => {
+    res.locals.currentUser = req.user
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
@@ -49,6 +61,9 @@ app.use('/Task', require('./routes/Task'))
 app.use('/Leave', require('./routes/Leave'))
 app.use('/Project', require('./routes/Project'))
 
+app.get('*', (req, res) => {
+    res.render('404Page')
+})
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

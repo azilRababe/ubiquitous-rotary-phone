@@ -2,30 +2,37 @@
     <br>
     <div class="container">
         <%- include('../partials/messages') %>
-            <div class="row">
-                <div class="col">
-                    <b class="display-5">
-                        <%= `This Project has been assined to ${Task.assignedTo} by ${Task.assignerId} ` %>
+            <h4 class="text-danger">
+
+                <% Task.assignedTo.forEach(e=>{ %>
+                    THIS TASK HAS BEEN ASSIGNED TO
+                    <b>
+                        <%= `${e.Firstname} ${e.Lastname}` %>
                     </b>
-                </div>
-                <div class="col">
-                    <b>Assign Date:</b>
-                    <%= moment(Task.assignDate).format('L') %> <br>
+                    <% }) %>
+                        <% Task.assignerId.forEach(e=>{ %>
+                            BY <b>
+                                <%= `${e.Firstname} ${e.Lastname}` %>
+                            </b>
+                            <% }) %>
+            </h4> <br>
+            <b>Assign Date:</b>
+            <%= moment(Task.assignDate).format('L') %> <br>
 
-                        <b>startDate:</b>
-                        <%= moment(Task.startDate).format('L') %> <br>
+                <b>startDate:</b>
+                <%= moment(Task.startDate).format('L') %> <br>
 
-                            <b>dueDate:</b>
-                            <%= moment(Task.dueDate).format('L')%> <br>
+                    <b>dueDate:</b>
+                    <%= moment(Task.dueDate).format('L')%> <br>
 
-                                <b>Notes:</b>
-                                <%= Task.Notes %> <br>
+                        <b>Notes:</b>
+                        <%= Task.Notes %> <br>
 
-                                    <b>task Status :</b>
-                                    <%= Task.taskStatus %> <br>
+                            <b>task Status :</b>
+                            <%= Task.taskStatus %> <br>
 
 
 
-                </div>
-            </div>
+
+
     </div>

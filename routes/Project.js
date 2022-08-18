@@ -2,18 +2,19 @@ const express = require('express'),
     router = express.Router(),
     Projects = require('../models/Projects'),
     Project = require('../controllers/Projects');
+const { isLoggedIn, isHR, isAdmin, isEmployee } = require('../middlewares/middleware')
 
 router.route('/')
-    .get(Project.index)
-    .post(Project.createProject)
+    .get(isLoggedIn, Project.index)
+    .post(isLoggedIn, Project.createProject)
 
-router.get('/new', Project.renderNewForm)
+router.get('/new', isLoggedIn, Project.renderNewForm)
 
 router.route('/:id')
-    .get(Project.showProject)
-    .put(Project.updateProject)
-    .delete(Project.deleteProject)
+    .get(isLoggedIn, Project.showProject)
+    .put(isLoggedIn, Project.updateProject)
+    .delete(isLoggedIn, Project.deleteProject)
 
-router.get('/:id/edit', Project.editForm)
+router.get('/:id/edit', isLoggedIn, Project.editForm)
 
 module.exports = router;

@@ -2,17 +2,18 @@ const express = require('express'),
     router = express.Router(),
     Leaves = require('../models/Leaves'),
     Leave = require('../controllers/Leaves');
+const { isLoggedIn, isHR, isAdmin, isEmployee } = require('../middlewares/middleware')
 
 router.route('/')
-    .get(Leave.index)
-    .post(Leave.createLeave)
+    .get(isLoggedIn, Leave.index)
+    .post(isLoggedIn, Leave.createLeave)
 
-router.get('/new', Leave.renderNewForm)
+router.get('/new', isLoggedIn, Leave.renderNewForm)
 
 router.route('/:id')
-    .put(Leave.updateLeave)
-    .delete(Leave.deleteLeave)
+    .put(isLoggedIn, Leave.updateLeave)
+    .delete(isLoggedIn, Leave.deleteLeave)
 
-router.get('/:id/edit', Leave.editForm)
+router.get('/:id/edit', isLoggedIn, Leave.editForm)
 
 module.exports = router;

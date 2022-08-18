@@ -26,7 +26,9 @@
                     <% for(let Lv of Leave){ %>
                         <tr>
                             <td>
-                                <%= Lv.employeeId %>
+                                <% Array.from(Lv.employeeId).forEach(e=>{%>
+                                    <%= `${e.Firstname} ${e.Lastname}` %>
+                                        <% }) %>
                             </td>
 
                             <td>
@@ -47,9 +49,11 @@
                             <td>
                                 <div class="d-flex justify-content-start gap-1">
                                     <form action="/Leave/<%= Lv._id%>?_method=DELETE" method="post">
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-outline-danger"><i
+                                                class="fa-solid fa-trash"></i></button>
                                     </form>
-                                    <a href="/Leave/<%= Lv._id %>/edit" class="btn btn-success">Update</a>
+                                    <a href="/Leave/<%= Lv._id %>/edit" class="btn btn-outline-success"><i
+                                            class="fa-solid fa-wrench"></i></a>
                                 </div>
                             </td>
                         </tr>

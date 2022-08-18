@@ -18,7 +18,10 @@
                                     <p class="text-muted font-size-sm">
                                         <%= Employee.location %>
                                     </p>
-                                    <button class="btn btn-outline-primary">Logout</button>
+                                    <a href="/logout">
+                                        <button class="btn btn-outline-primary">Logout</button>
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
@@ -93,8 +96,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank"
-                                        href="/Employee/<%= Employee._id %>/edit ">Edit</a>
+                                    <a class="btn btn-info " href="/Employee/<%= Employee._id %>/edit ">Edit</a>
                                 </div>
                             </div>
                         </div>

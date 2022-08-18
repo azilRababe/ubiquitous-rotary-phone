@@ -2,6 +2,7 @@
     <br>
     <div class="container">
         <h2>Departments</h2> <br>
+
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -13,6 +14,7 @@
             </thead>
             <tbody>
                 <% for(let dep of Department){ %>
+
                     <tr>
                         <td>
 
@@ -22,9 +24,12 @@
                             <%= dep.departmentName %>
                         </td>
                         <td>
-                            <%= dep.depEmployees %>
+                            <% Array.from(dep.depEmployees).forEach(e=> { %>
+                                <i class="fa-regular fa-face-smile text-danger"></i>
+                                <%= `${e.Firstname} ${e.Lastname}` %> <br>
+                                    <% }); %>
                         </td>
-                        <td>
+                        <td style="width: 40%;">
                             <%= dep.Description %>
                         </td>
                     </tr>
