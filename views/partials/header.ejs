@@ -1,34 +1,106 @@
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">HRMS</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href='/Profil/<%= currentUser._id %> '>Profil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/Employee">Employees</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Department">Departments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Leave">Leaves</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Task">Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Project">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-            </ul>
+<% if(currentUser.userRole=='Admin' || currentUser.userRole=="HR" ){ %>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/img/Brand01.svg" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard <i
+                            class="fa-solid fa-table-columns"></i></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/Profil/<%=currentUser._id %> "><i
+                                    class="fa-solid fa-user-ninja"></i> Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee"><i class="fa-solid fa-people-group"></i> Employees</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Department">
+                                <i class="fa-solid fa-building-user"></i> Departments</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa-solid fa-chart-line"></i> Activities
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="/Project">Projects</a></li>
+                                <li><a class="dropdown-item" href="/Task">Tasks</a></li>
+                                <li><a class="dropdown-item" href="/Leave">Leaves</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Holidays</a></li>
+                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+
+    <% }else{ %>
+
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="/img/Brand01.svg" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard <i
+                                class="fa-solid fa-table-columns"></i></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/Profil/<%= currentUser._id %> "><i
+                                        class="fa-solid fa-user-ninja"></i> Profil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-calendar-week"></i> Holidays</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa-solid fa-chart-line"></i> Activities
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item" href="/Project">Projects</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="/Task">Tasks</a></li>
+                                    <li><a class="dropdown-item" href="/Leave">Leaves</a></li>
+                                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                            </li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <% } %>

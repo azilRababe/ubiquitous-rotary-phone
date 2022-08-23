@@ -26,7 +26,6 @@ module.exports.showTask = async (req, res) => {
             if (err) { req.flash('error', 'Something went wrong') }
             res.render('Task/Show', { Task })
         })
-
 }
 
 module.exports.editForm = async (req, res) => {

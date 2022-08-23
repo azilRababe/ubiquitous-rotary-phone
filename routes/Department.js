@@ -2,10 +2,13 @@ const express = require('express'),
     router = express.Router(),
     Departments = require('../models/Departments'),
     Department = require('../controllers/Department'),
-    { isLoggedIn, isHR, isAdmin, isEmployee } = require('../middlewares/middleware'),
+    { isLoggedIn, authRole } = require('../middlewares/middleware'),
     catchAsync = require('../utils/catchAsync');
 
 router.route('/')
-    .get(isLoggedIn, isAdmin, isHR, catchAsync(Department.index))
+    .get(isLoggedIn, authRole('HR'), catchAsync(Department.index))
+
+router.route('/:id')
+    .get(isLoggedIn, Department.showDep)
 
 module.exports = router;

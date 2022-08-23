@@ -14,22 +14,20 @@
             </thead>
             <tbody>
                 <% for(let dep of Department){ %>
-
                     <tr>
                         <td>
-
                             <%= dep.departmentId %>
                         </td>
                         <td>
                             <%= dep.departmentName %>
                         </td>
-                        <td>
-                            <% Array.from(dep.depEmployees).forEach(e=> { %>
+                        <td class="text-nowrap">
+                            <% dep.depEmployees.forEach(e=> { %>
                                 <i class="fa-regular fa-face-smile text-danger"></i>
                                 <%= `${e.Firstname} ${e.Lastname}` %> <br>
                                     <% }); %>
                         </td>
-                        <td style="width: 40%;">
+                        <td>
                             <%= dep.Description %>
                         </td>
                     </tr>

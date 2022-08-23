@@ -6,6 +6,11 @@ html {
     background-color: #e9ecef;
     font-size: 1rem;
     overflow-x: hidden !important;
+    /* margin-top: 35px; */
+}
+
+.container {
+    margin-top: 55px;
 }
 
 .inlineBlock {
@@ -100,12 +105,5 @@ html {
     }
 }
 
-/* error page */
 
-.message-box h1 {
-    color: #252932;
-    font-size: 98px;
-    font-weight: 700;
-    line-height: 98px;
-    text-shadow: rgba(61, 61, 61, 0.3) 1px 1px, rgba(61, 61, 61, 0.2) 2px 2px, rgba(61, 61, 61, 0.3) 3px 3px;
-}
+/* dashboard */

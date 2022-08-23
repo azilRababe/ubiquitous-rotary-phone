@@ -1,3 +1,4 @@
+const { json } = require('body-parser');
 const Employees = require('../models/Employees'),
     passport = require('passport'),
     bcrypt = require('bcryptjs');
@@ -28,26 +29,29 @@ module.exports.createEmployee = async (req, res) => {
 module.exports.showEmployee = async (req, res) => {
     const Employee = await Employees.findById({ _id: req.params.id })
     if (!Employee) {
-        req.flash('error_msg', 'OPS! EMPLOYEE NOT FOUND')
+        req.flash('error_msg', 'Employee not found')
+        return res.redirect(`/Profil/${req.user.id}`)
     }
-    res.render('Employee/Show', { Employee })
+    return res.render('Employee/Show', { Employee })
 }
 
-module.exports.updateEmployee = async (req, res) => {
+module.exports.updateEmployee = async (err, req, res) => {
     const body = req.body
     const Employee = await Employees.findByIdAndUpdate(req.params.id, body)
-    req.flash('success_msg', 'GOT SOME CHANGES')
-    res.redirect(`/Employee/${req.params.id}`)
+    if (err) { res.status(404).json({ message: 'Something went wrong' }) }
+    req.flash('success_msg', 'Data has been updated successfully')
+    res.redirect(`/Employee`)
 }
 
 module.exports.editForm = async (req, res) => {
     const { id } = req.params
     const Employee = await Employees.findById({ _id: id })
+    if (!Employee) { res.status(404).json({ message: 'Employee not found' }) }
     res.render('Employee/edit', { Employee })
 }
 
 module.exports.deleteEmployee = async (req, res) => {
     await Employees.findOneAndDelete({ _id: req.params.id })
-    req.flash('error_msg', 'OMG! YOU JUST FIRED AN EMPLOYEE')
+    req.flash('success_msg', 'Employee has been deleted successfully')
     res.redirect('/Employee')
 }

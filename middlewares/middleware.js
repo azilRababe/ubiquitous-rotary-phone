@@ -1,10 +1,14 @@
 
 const { find } = require('lodash');
-const { findByUsername } = require('../models/Employees');
-const Employee = require('../models/Employees');
+const Employees = require('../models/Employees');
+const Departments = require('../models/Departments')
+const Leaves = require('../models/Leaves')
+const Projects = require('../models/Projects')
+const Tasks = require('../models/Tasks')
 
 
-module.exports.isLoggedIn = (req, res, next) => {
+
+function isLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl
         req.flash('error', 'You must be signed in first!');
@@ -13,37 +17,18 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
-module.exports.isAdmin = async (req, res, next) => {
-    if (req.user.userRole != 'Admin') {
-        req.flash('error', 'YOU MUST BE AN ADMIN TO ACCESS THIS PAGE')
-        return res.send('you shoud be an admin to access this page')
+function authRole(Role) {
+    return (req, res, next) => {
+        if (req.user.userRole != Role && req.user.userRole != 'Admin') {
+            res.json({ message: 'You are not allowed to see this content' })
+        }
+        next()
     }
-    next()
 }
 
-// module.exports.isEmployee = (req, res, next) => {
-//     if (req.user.userRole != 'Employee') {
-//         req.flash('error', 'YOU MUST BE AN ADMIN TO ACCESS THIS PAGE')
-//         return res.send('you should be')
-//     }
-//     next()
-// }
 
-module.exports.isHR = (req, res, next) => {
-    if (req.user.userRole != 'HR') {
-        req.flash('error', 'YOU MUST BE AN ADMIN TO ACCESS THIS PAGE')
-        return res.send('you cannot access this page')
-    }
-    next()
-}
 
-module.exports.isHOD = (req, res, next) => {
-    if (req.user.userRole != 'HOD') {
-        req.flash('error', 'YOU MUST BE AN ADMIN TO ACCESS THIS PAGE')
-        return res.send('you can not access this page')
-    }
-    next()
-}
+module.exports = { isLoggedIn, authRole }
 
 
 

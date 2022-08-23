@@ -3,7 +3,7 @@ const express = require('express'),
     passport = require('passport'),
     Employee = require('../models/Employees'),
     index = require('../controllers/index');
-const { isLoggedIn, isHR, isAdmin, isEmployee } = require('../middlewares/middleware')
+const { isLoggedIn } = require('../middlewares/middleware')
 
 router.route('/Profil/:id')
     .get(isLoggedIn, index.Profil)

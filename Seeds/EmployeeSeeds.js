@@ -25,7 +25,6 @@ for (let i = 0; i < 10; i += 1) {
         Firstname: Firstname,
         Lastname: Lastname,
         username: faker.internet.userName(Firstname, Lastname),
-        password: faker.internet.password(),
         userRole: faker.helpers.arrayElement(['Employee', 'HOD', 'Admin', 'HR']),
         JD: faker.company.bsBuzz()
     };
