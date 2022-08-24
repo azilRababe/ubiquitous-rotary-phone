@@ -5,7 +5,7 @@ const express = require('express'),
 const { isLoggedIn, authRole } = require('../middlewares/middleware')
 
 router.route('/')
-    .get(isLoggedIn, authRole('HR'), Leave.index)
+    .get(isLoggedIn, Leave.index)
     .post(isLoggedIn, Leave.createLeave)
 
 router.get('/new', isLoggedIn, Leave.renderNewForm)

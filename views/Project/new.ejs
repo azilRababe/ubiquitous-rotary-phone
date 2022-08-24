@@ -1,68 +1,71 @@
-<%- include('../partials/header') %>
-    <br>
+<%- include('../partials/header') %> <br>
     <div class="container">
-        <h3 class="text-center">Add a Project</h3>
-        <form action="/Leave" method="post" style="max-width: 75%;margin:0 auto">
+        <form action="/Project" method="post">
             <div class="row">
-                <div class="col">
-                    <div class="row mb-3">
-                        <label for="employeeId" class="col-sm-2 col-form-label">Employee Id:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="employeeId" placeholder="Enter Your ID..."
-                                required>
+                <div class="col-lg-12">
+                    <div class="job-detail mt-2 p-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-5 text-danger text-center">
+                                    Create Project
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="custom-form">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="" class="text-muted">Title</label>
+                                        <input name="Title" type="text" class="form-control resume" placeholder="Title">
+                                    </div>
+                                </div>
 
-                    <div class="row mb-3">
-                        <label for="projectId" class="col-sm-2 col-form-label">Project Id:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="projectId"
-                                placeholder="Enter the project ID..." required>
-                        </div>
-                    </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="" class="text-muted">Start Date</label>
+                                        <input type="date" name="startDate" class="form-control resume" required>
+                                    </div>
+                                </div>
 
-                    <div class="row mb-3">
-                        <label for="projectTitle" class="col-sm-2 col-form-label">Project title:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="projectTitle"
-                                placeholder="Enter the project title...">
-                        </div>
-                    </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="" class="text-muted">Due Date</label>
+                                        <input name="dueDate" type="date" class="form-control resume" required>
+                                    </div>
+                                </div>
 
-                    <div class="row mb-3">
-                        <label for="projectStart" class="col-sm-2 col-form-label">Due Date:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="date" name="projectStart">
-                        </div>
-                    </div>
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="" class="text-muted">Status</label>
+                                        <select name="Status" class="form-select">
+                                            <option value="" selected disabled>
+                                                ...
+                                            </option>
+                                            <option value="Upcoming">Upcoming</option>
+                                            <option value="In progress">In progress</option>
+                                            <option value="Done">Done</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                    <div class="row mb-3">
-                        <label for="projectEnd" class="col-sm-2 col-form-label">End Date:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="date" name="projectEnd" required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="leaveEnd" class="col-sm-2 col-form-label">Status:</label>
-                        <div class="col-sm-10">
-                            <select name="completetionStatus" class="form-select" id="">
-                                <option value="" selected disabled></option>
-                                <option value="Upcoming">Upcoming</option>
-                                <option value="Inprogress">In progress</option>
-                                <option value="Done">Done</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="createdBy" class="col-sm-2 col-form-label">Created by:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" placeholder="Created by..." type="text" name="createdBy">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label class="text-muted">created By</label>
+                                        <input type="text" class="form-control" name="Proof"
+                                            value="<%= currentUser._id %>" readonly>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Add</button>
+            <div class="row my-3">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-primary btn-lg">Submit</button>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>

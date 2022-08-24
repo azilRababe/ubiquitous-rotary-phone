@@ -13,7 +13,6 @@ for (let i = 0; i < 10; i += 1) {
     const Firstname = faker.name.firstName();
     const Lastname = faker.name.lastName();
     let newEmployee = {
-        employeeId: faker.random.alphaNumeric(10),
         Phone: faker.phone.number(),
         Email: faker.internet.email(Firstname, Lastname),
         bloodType: faker.helpers.arrayElement(['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']),
@@ -26,7 +25,10 @@ for (let i = 0; i < 10; i += 1) {
         Lastname: Lastname,
         username: faker.internet.userName(Firstname, Lastname),
         userRole: faker.helpers.arrayElement(['Employee', 'HOD', 'Admin', 'HR']),
-        JD: faker.company.bsBuzz()
+        JD: faker.company.bsBuzz(),
+        projectId: faker.database.mongodbObjectId(),
+        leaveId: faker.database.mongodbObjectId(),
+        taksId: faker.database.mongodbObjectId()
     };
     Employees.push(newEmployee);
 

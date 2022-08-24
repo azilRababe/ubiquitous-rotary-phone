@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
     <br>
-
     <div class="container">
         <div class="d-flex gap-1">
             <h2>Leaves</h2>
@@ -18,7 +17,7 @@
                         <th scope="col">Ends</th>
                         <th scope="col">submission</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Attachment</th>
+                        <th scope="col">Proof</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -26,11 +25,10 @@
                     <% for(let Lv of Leave){ %>
                         <tr>
                             <td>
-                                <% Array.from(Lv.employeeId).forEach(e=>{%>
-                                    <%= `${e.Firstname} ${e.Lastname}` %>
-                                        <% }) %>
+                                <% Lv.employeeId.forEach(e=> { %>
+                                    <%= `${e.Firstname} ${e.Lastname}` %> <br>
+                                        <% }); %>
                             </td>
-
                             <td>
                                 <%= moment(Lv.startDate).format('L')%>
                             </td>
@@ -43,19 +41,23 @@
                             <td>
                                 <%= Lv.leaveStatus %>
                             </td>
-                            <td>
-                                <%= Lv.attachment %>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-start gap-1">
-                                    <form action="/Leave/<%= Lv._id%>?_method=DELETE" method="post">
-                                        <button class="btn btn-outline-danger"><i
-                                                class="fa-solid fa-trash"></i></button>
-                                    </form>
-                                    <a href="/Leave/<%= Lv._id %>/edit" class="btn btn-outline-success"><i
-                                            class="fa-solid fa-wrench"></i></a>
-                                </div>
-                            </td>
+                            <% if(typeof Lv.Proof !=='undefined' ) {%>
+                                <td>
+                                    <%= Lv.Proof %>
+                                </td>
+                                <% }else{ %>
+                                    <td><small class="text-danger">No Proof uploaded</small></td>
+                                    <% } %>
+                                        <td>
+                                            <div class="d-flex justify-content-start gap-1">
+                                                <form action="/Leave/<%= Lv._id%>?_method=DELETE" method="post">
+                                                    <button class="btn btn-outline-danger"><i
+                                                            class="fa-solid fa-trash"></i></button>
+                                                </form>
+                                                <a href="/Leave/<%= Lv._id %>/edit" class="btn btn-outline-success"><i
+                                                        class="fa-solid fa-wrench"></i></a>
+                                            </div>
+                                        </td>
                         </tr>
                         <% } %>
                 </tbody>

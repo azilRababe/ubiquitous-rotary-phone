@@ -2,37 +2,49 @@
     <br>
     <div class="container">
         <h2>Departments</h2> <br>
-
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scole="col">Stuff</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for(let dep of Department){ %>
+        <%- include('../partials/messages') %>
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <td>
-                            <%= dep.departmentId %>
-                        </td>
-                        <td>
-                            <%= dep.departmentName %>
-                        </td>
-                        <td class="text-nowrap">
-                            <% dep.depEmployees.forEach(e=> { %>
-                                <i class="fa-regular fa-face-smile text-danger"></i>
-                                <%= `${e.Firstname} ${e.Lastname}` %> <br>
-                                    <% }); %>
-                        </td>
-                        <td>
-                            <%= dep.Description %>
-                        </td>
+                        <th scope="col">Name</th>
+                        <th scope="col">H.O.D</th>
+                        <th scole="col">Employees</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Actions</th>
                     </tr>
-                    <% } %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% for(let dep of Department){ %>
+                        <tr>
+                            <td>
+                                <%= dep.Name %>
+                            </td>
+                            <td>
+                                <% dep.HOD.forEach(e=> { %>
+                                    <%= `${e.Firstname} ${e.Lastname}` %> <br>
+                                        <% }); %>
+                            </td>
+                            <td class="text-nowrap">
+                                <% dep.Employees.forEach(e=> { %>
+                                    <%= `${e.Firstname} ${e.Lastname}` %> <br>
+                                        <% }); %>
+                            </td>
+                            <td>
+                                <%= dep.Description %>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start gap-1">
+                                    <form action="/Department/<%= dep._id %>?_method=DELETE" method="post">
+                                        <button class="btn btn-outline-danger"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                    <a href="/Department/<%= dep._id %>/edit" class="btn btn-outline-success"><i
+                                            class="fa-solid fa-wrench"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
     </div>
     <br>

@@ -1,66 +1,100 @@
-<%- include('../partials/header') %>
-    <br>
+<%- include('../partials/header') %> <br>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
-        <h3 class="text-center">Edit a Task</h3>
-        <form action="/Task/<%= Task._id %>?_method=PUT" method="post" style="max-width: 75%;margin:0 auto">
-            <div class="row">
-                <div class="col">
-                    <div class="row mb-3">
-                        <label for="taskId" class="col-sm-2 col-form-label">Id:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="taskId" placeholder="Task ID..."
-                                value="<%= Task.taskId %> " disabled>
-                        </div>
-                    </div>
+        <div class="row flex-lg-nowrap">
+            <div class="col">
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/Task/<%= Task._id %>?_method=PUT" method="post">
+                                    <div class="e-profile">
+                                        <div class="row">
+                                            <small class="text-end text-danger">
+                                                <% Task.assignerId.forEach(e=>{ %>
+                                                    Created by <%= `${e.Firstname} ${ e.Lastname}` %>
+                                                        <% }) %>
+                                                            <br>
+                                                            <span class="text-dark">
+                                                                <%= moment(Task.assignDate,'YYYYMMDD').fromNow() %>
+                                                            </span>
+                                            </small>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Employees</label>
+                                                                    <input class="form-control" type="text" name="Title"
+                                                                        name="assignedTo">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Start Date</label>
+                                                                    <input type="date" name="startDate"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Due Date</label>
+                                                                    <input class="form-control" type="date"
+                                                                        name="dueDate">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Status</label>
+                                                                    <select name="Status" id="" class="form-select">
+                                                                        <option value="" disabled selected>
+                                                                            <%= Task.Status %>
+                                                                        </option>
+                                                                        <option value="Upcoming">Upcoming</option>
+                                                                        <option value="In progress">In progress</option>
+                                                                        <option value="Done">Done</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text">Notes</span>
+                                                                    <textarea class="form-control"
+                                                                        aria-label="With textarea" name="Notes"
+                                                                        value="<%= Task.Notes %> "></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                    <div class="row mb-3">
-                        <label for="assignerId" class="col-sm-2 col-form-label">Assigner Id:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="assignerId" placeholder="Assiner Id...">
-                        </div>
-                    </div>
+                                                        <div class="row my-5">
+                                                            <div class="col d-flex justify-content-end">
+                                                                <button type="submit"
+                                                                    class="btn btn-outline-success">Save
+                                                                    Changes</button>
+                                                            </div>
+                                                        </div>
 
-                    <div class="row mb-3">
-                        <label for="startDate" class="col-sm-2 col-form-label">Start Date:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="date" name="startDate" required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="dueDate" class="col-sm-2 col-form-label">Due Date:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="date" name="dueDate" required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="Notes" class="col-sm-2 col-form-label">Notes:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="Notes" placeholder="Notes ..." required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="assignedTo" class="col-sm-2 col-form-label">Assigned To :</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" placeholder="" type="text" name="assignedTo">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="taskStatus" class="col-sm-2 col-form-label">Status:</label>
-                        <div class="col-sm-10">
-                            <select name="taskStatus" class="form-select" id="">
-                                <option value="" selected disabled></option>
-                                <option value="Upcoming">Upcoming</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Done">Done</option>
-                            </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Edit</button>
-        </form>
+        </div>
+
     </div>

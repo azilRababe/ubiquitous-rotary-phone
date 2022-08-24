@@ -3,7 +3,13 @@ const Tasks = require('../models/Tasks');
 
 module.exports.index = async (req, res) => {
     const Task = await Tasks.find({})
-    res.render('Task/index', { Task })
+        .populate({ path: 'assignerId', select: 'Firstname Lastname' })
+        .populate({ path: 'assignedTo', select: 'Firstname Lastname' })
+        .exec((err, Task) => {
+            if (err) { res.json({ err: err }) }
+            res.render('Task/index', { Task })
+        })
+
 }
 
 module.exports.renderNewForm = (req, res) => {
@@ -13,7 +19,7 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.createTask = async (req, res) => {
     const Task = new Tasks({ ...req.body.Tasks })
     Task.save()
-    req.flash('success_msg', 'OPS, NEW TASK HAS BEEN ASSINED TO YOU')
+    req.flash('success_msg', 'Task has been created successfully')
     res.render('Task/show')
 
 }
@@ -23,7 +29,7 @@ module.exports.showTask = async (req, res) => {
         .populate({ path: 'assignerId', select: 'Firstname Lastname -_id' })
         .populate({ path: 'assignedTo', select: 'Firstname Lastname -_id' })
         .exec((err, Task) => {
-            if (err) { req.flash('error', 'Something went wrong') }
+            if (err) { res.json({ err: err }) }
             res.render('Task/Show', { Task })
         })
 }
@@ -31,19 +37,26 @@ module.exports.showTask = async (req, res) => {
 module.exports.editForm = async (req, res) => {
     const { id } = req.params
     const Task = await Tasks.findById({ _id: id })
-    res.render('Task/edit', { Task })
+        .populate({ path: 'assignerId', select: 'Firstname Lastname' })
+        .populate({ path: 'assignedTo', select: 'Firstname Lastname' })
+        .exec((err, Task) => {
+            if (err) { res.json({ err: err }) }
+            res.render('Task/edit', { Task })
+        })
+
+
 }
 
 module.exports.updateTask = async (req, res) => {
     const body = req.body
     const Task = await Tasks.findByIdAndUpdate(req.params.id, body)
-    req.flash('success_msg', 'GOT SOME CHANGES')
-    res.render('Task/Show', { Task })
+    req.flash('success_msg', 'Changes saved successfully')
+    res.redirect('/Task', { Task })
 }
 
 module.exports.deleteTask = async (req, res) => {
     const { id } = req.params
     await Tasks.findOneAndDelete({ _id: id })
-    req.flash('success_msg', 'OMG! YOU JUST DELETED A TASK')
+    req.flash('success_msg', 'Task has been deleted successfully')
     res.redirect('/Task')
 }

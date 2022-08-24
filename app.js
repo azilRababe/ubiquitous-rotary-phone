@@ -15,6 +15,8 @@ const { default: mongoose } = require('mongoose'),
     Employee = require('./models/Employees'),
     jwt = require('jsonwebtoken');
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(methodOverride('_method'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')

@@ -1,63 +1,85 @@
-<%- include('../partials/header') %>
-    <br>
+<%- include('../partials/header') %> <br>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
-        <h3 class="text-center">Edit Project</h3>
-        <form action="/Project/<%= Project._id %>?_method=PUT" method="post" style="max-width: 75%;margin:0 auto">
-            <div class="row">
-                <div class="col">
-                    <div class="row mb-3">
-                        <label for="projectId" class="col-sm-2 col-form-label">Project Id:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="projectId" placeholder="Project Id..."
-                                value="<%= Project._id %> " disabled>
+        <div class="row flex-lg-nowrap">
+            <div class="col">
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/Project/<%= Project._id %>?_method=PUT" method="post">
+                                    <div class="e-profile">
+                                        <div class="row">
+                                            <small class="text-end text-danger">
+                                                Created by <%= Project.createdBy%> <br>
+                                                    <span class="text-dark">
+                                                        <%= moment(Project.Createdin,'YYYYMMDD').fromNow() %>
+                                                    </span>
+                                            </small>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Title</label>
+                                                                    <input class="form-control" type="text" name="Title"
+                                                                        value="<%= Project.Title %> ">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Start Date</label>
+                                                                    <input type="date" name="startDate"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Due Date</label>
+                                                                    <input class="form-control" type="date"
+                                                                        name="dueDate" value="<%= Project.dueDate %> ">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Status</label>
+                                                                    <select name="Status" id="" class="form-select">
+                                                                        <option value="" disabled selected>
+                                                                            <%= Project.Status %>
+                                                                        </option>
+                                                                        <option value="Upcoming">Upcoming</option>
+                                                                        <option value="In progress">In progress</option>
+                                                                        <option value="Done">Done</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row my-5">
+                                                            <div class="col d-flex justify-content-end">
+                                                                <button type="submit"
+                                                                    class="btn btn-outline-success">Save
+                                                                    Changes</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="row mb-3">
-                        <label for="employeeId" class="col-sm-2 col-form-label">CIN:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="employeeId" placeholder="Employee Id..."
-                                required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="projectTitle" class="col-sm-2 col-form-label">Title:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="projectTitle"
-                                value="<%= Project.projectTitle %> ">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="projectStart" class="col-sm-2 col-form-label">Start Date:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="date" name="projectStart">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="projectEnd" class="col-sm-2 col-form-label">Due Date:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="date" name="projectEnd">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label for="completetionStatus" class="col-sm-2 col-form-label">Status:</label>
-                        <div class="col-sm-10">
-                            <select name="completetionStatus" class="form-select" id="">
-                                <option value="" selected disabled></option>
-                                <option value="Upcoming">Upcoming</option>
-                                <option value="in Progress">In Progress</option>
-                                <option value="Done">Done</option>
-                            </select>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Edit</button>
-        </form>
+        </div>
+
     </div>

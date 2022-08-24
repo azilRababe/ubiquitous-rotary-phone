@@ -1,0 +1,93 @@
+<%- include('../partials/header') %> <br>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+        <div class="row flex-lg-nowrap">
+            <div class="col">
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/Department/<%= Department._id %>?_method=PUT" method="post">
+                                    <div class="e-profile">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-auto mb-3"></div>
+                                            <div
+                                                class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                                                        <% Department.HOD.forEach(e=> { %>
+                                                            <%= `${e.Firstname} ${e.Lastname}` %> <br>
+                                                                <% }); %>
+
+                                                    </h4>
+                                                    <p class="mb-0">
+                                                        <% Department.HOD.forEach(e=> { %>
+                                                            <%= `${e.Email}` %> <br>
+                                                                <% }); %>
+                                                    </p>
+                                                    <!-- <div class="text-muted"><small>
+                                                       
+                                                    </small></div> -->
+                                                </div>
+                                                <div class="text-center text-sm-right">
+                                                    <span class="badge badge-secondary text-info">
+                                                        Description
+                                                    </span>
+                                                    <div class="text-muted"><small>
+                                                            <%= Department.Description %>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Name</label>
+                                                                    <input class="form-control" type="text" name="Name"
+                                                                        value="<%= Department.Name %> ">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>HOD</label>
+                                                                    <input type="text" name="HOD" class="form-control"
+                                                                        placeholder="Head of Department">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label>Employees</label>
+                                                                <input type="text" name="Employees" class="form-control"
+                                                                    placeholder="Add Employees">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row my-5">
+                                                            <div class="col d-flex justify-content-end">
+                                                                <button type="submit"
+                                                                    class="btn btn-outline-success">Save
+                                                                    Changes</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

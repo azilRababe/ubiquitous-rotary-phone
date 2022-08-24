@@ -1,38 +1,103 @@
-<%- include('../partials/header') %>
-    <br>
+<%- include('../partials/header') %> <br>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
-        <%- include('../partials/messages') %>
-            <h4 class="text-danger">
 
-                <% Task.assignedTo.forEach(e=>{ %>
-                    THIS TASK HAS BEEN ASSIGNED TO
-                    <b>
-                        <%= `${e.Firstname} ${e.Lastname}` %>
-                    </b>
-                    <% }) %>
-                        <% Task.assignerId.forEach(e=>{ %>
-                            BY <b>
-                                <%= `${e.Firstname} ${e.Lastname}` %>
-                            </b>
-                            <% }) %>
-            </h4> <br>
-            <b>Assign Date:</b>
-            <%= moment(Task.assignDate).format('L') %> <br>
+        <div class="row flex-lg-nowrap">
+            <div class="col">
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="e-profile">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-auto mb-3"></div>
+                                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                                            <% Task.assignerId.forEach(e=>{%>
+                                                <%= `${e.Firstname} ${e.Lastname}` %>
+                                                    <%}) %>
+                                        </h4>
+                                        <p class="text-danger text-end">
+                                            <%= moment(Task.assignDate,'YYYYMMDD').fromNow(); %>
+                                        </p>
 
-                <b>startDate:</b>
-                <%= moment(Task.startDate).format('L') %> <br>
+                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <p class="active nav-link text-muted">Id: <%= Task._id %>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content pt-3">
+                                        <div class="tab-pane active">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label class="text-muted">Employees</label> <br>
+                                                                <% if(typeof Task.assinedTo !='undefined' ){ %>
+                                                                    <p class="text-nowrap">
+                                                                        <% Task.assignedTo.forEach(e=>{%>
+                                                                            <%= `${e.Firstname} ${e.Lastname}` %>
+                                                                                <%}) %>
+                                                                    </p>
+                                                                    <% }else{ %>
+                                                                        <small
+                                                                            class="text-primary my-5">Waiting...</small>
+                                                                        <% } %>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group">
+                                                                <label class="text-muted">Start Date</label>
+                                                                <p class="fs-6">
+                                                                    <%= moment(Task.startDate).format('LL') %>
+                                                                </p>
+                                                                <label class="text-muted">Due Date</label>
+                                                                <p class="fs-6">
+                                                                    <%= moment(Task.dueDate).format('LL') %>
+                                                                </p>
+                                                                <label class="text-muted">Status</label>
+                                                                <p class="fs-6">
+                                                                    <%= Task.Status %>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                    <b>dueDate:</b>
-                    <%= moment(Task.dueDate).format('L')%> <br>
+                                                    <div class="row">
+                                                        <div class="col mb-3">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-text">Notes</span>
+                                                                            <textarea class="form-control"
+                                                                                aria-label="With textarea"
+                                                                                value=""><%= Task.Notes %></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col d-flex justify-content-end">
+                                                    <a href="/Task" class="btn btn-outline-success">Tasks</a>
+                                                </div>
+                                            </div>
 
-                        <b>Notes:</b>
-                        <%= Task.Notes %> <br>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <b>task Status :</b>
-                            <%= Task.taskStatus %> <br>
-
-
-
-
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>

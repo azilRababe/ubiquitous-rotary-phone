@@ -5,15 +5,15 @@ const express = require('express'),
     { isLoggedIn, authRole } = require('../middlewares/middleware');
 
 router.route('/')
-    .get(isLoggedIn, authRole('HR'), Employee.index)
-    .post(isLoggedIn, authRole('HR'), Employee.createEmployee)
+    .get(isLoggedIn, Employee.index)
+    .post(Employee.createEmployee)
 
-router.get('/new', isLoggedIn, authRole('HR'), Employee.renderNewForm)
+router.get('/new', Employee.renderNewForm)
 
 router.route('/:id')
-    .get(isLoggedIn, authRole('HR'), Employee.showEmployee)
+    .get(isLoggedIn, Employee.showEmployee)
     .put(isLoggedIn, Employee.updateEmployee)
-    .delete(isLoggedIn, isLoggedIn, authRole('HR'), Employee.deleteEmployee)
+    .delete(isLoggedIn, Employee.deleteEmployee)
 
 router.get('/:id/edit', isLoggedIn, Employee.editForm)
 

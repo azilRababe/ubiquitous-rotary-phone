@@ -8,11 +8,10 @@ const { default: mongoose } = require('mongoose');
 let Departments = [];
 for (let i = 0; i < 10; i += 1) {
     let newDepartment = {
-        departmentId: faker.random.alphaNumeric(5),
-        departmentName: faker.commerce.department(),
-        depEmployees: faker.database.mongodbObjectId(),
-        HOD_Id: faker.database.mongodbObjectId(),
-        Description: faker.lorem.paragraph()
+        Name: faker.helpers.arrayElement(['Marketing', 'Finance', ' Operations management', ' Human Resource', 'IT']),
+        HOD: faker.database.mongodbObjectId(),
+        Employees: faker.database.mongodbObjectId(),
+        Description: faker.lorem.sentence()
     };
     Departments.push(newDepartment);
 

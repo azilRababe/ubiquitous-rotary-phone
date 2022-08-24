@@ -6,16 +6,16 @@ const express = require('express'),
 const { isLoggedIn, authRole } = require('../middlewares/middleware')
 
 router.route('/')
-    .get(isLoggedIn, authRole('HR'), Task.index)
-    .post(isLoggedIn, authRole('HR'), Task.createTask)
+    .get(isLoggedIn, Task.index)
+    .post(isLoggedIn, Task.createTask)
 
-router.get('/new', isLoggedIn, authRole('HR'), Task.renderNewForm)
+router.get('/new', isLoggedIn, Task.renderNewForm)
 
 router.route('/:id')
-    .get(isLoggedIn, authRole('HR'), Task.showTask)
-    .put(isLoggedIn, authRole('HR'), Task.updateTask)
-    .delete(isLoggedIn, authRole('HR'), Task.deleteTask)
+    .get(isLoggedIn, Task.showTask)
+    .put(isLoggedIn, Task.updateTask)
+    .delete(isLoggedIn, Task.deleteTask)
 
-router.get('/:id/edit', isLoggedIn, authRole('HR'), Task.editForm)
+router.get('/:id/edit', isLoggedIn, Task.editForm)
 
 module.exports = router;

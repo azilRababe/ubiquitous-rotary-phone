@@ -3,7 +3,6 @@ const mongoose = require('mongoose'),
     passportLocalMongoose = require('passport-local-mongoose');
 
 const Employees = new Schema({
-    employeeId: { type: String, unique: true },
     Phone: String,
     Email: { type: String, unique: true },
     bloodType: String,
@@ -17,6 +16,19 @@ const Employees = new Schema({
     username: String,
     userRole: ['Employee', 'HOD', 'Admin', 'HR'],
     JD: String,
+    join: { type: Date, default: Date.now },
+    projectId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Projects'
+    },
+    leaveId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Leaves'
+    },
+    taksId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Tasks'
+    }
 })
 
 Employees.plugin(passportLocalMongoose);

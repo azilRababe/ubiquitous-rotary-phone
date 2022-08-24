@@ -6,9 +6,12 @@ const express = require('express'),
     catchAsync = require('../utils/catchAsync');
 
 router.route('/')
-    .get(isLoggedIn, authRole('HR'), catchAsync(Department.index))
+    .get(isLoggedIn, Department.index)
 
 router.route('/:id')
-    .get(isLoggedIn, Department.showDep)
+    .put(isLoggedIn, Department.updateDep)
+    .delete(isLoggedIn, Department.deleteDep)
 
+router.route('/:id/edit')
+    .get(isLoggedIn, Department.editForm)
 module.exports = router;

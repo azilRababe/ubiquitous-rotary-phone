@@ -13,6 +13,6 @@ router.route('/login')
     .post(index.login)
 
 router.route('/logout')
-    .get(isLoggedIn, index.logout)
+    .get(index.logout)
 
 module.exports = router;

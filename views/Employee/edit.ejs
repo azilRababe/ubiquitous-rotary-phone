@@ -1,49 +1,148 @@
 <%- include('../partials/header') %> <br>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
-        <h3 class="text-center">Edit Employee</h3>
-        <form action="/Employee/<%= Employee._id %>?_method=PUT" method="post" style="max-width: 75%;margin:0 auto">
-            <input class="form-control" placeholder="" type="Email" name="Email" id="" value="<%= Employee.Email %> "
-                disabled> <br>
-            <div class="row">
-                <div class="col">
-                    <input class="form-control" placeholder="Firstname.." type="text" name="Firstname" id=""
-                        value="<%= Employee.Firstname %> "> <br>
-                    <input class="form-control" placeholder="Lastname.." type="text" name="Lastname" id=""
-                        value="<%= Employee.Lastname %> "> <br>
-                    <input class="form-control" placeholder="username.." type="text" name="username" id=""
-                        value="<%= Employee.username %> "> <br>
-                    <input class="form-control" placeholder="Phone..." type="tel" name="Phone"
-                        value="<%= Employee.Phone %> "><br>
-                    <input class="form-control" placeholder="" type="date" name="" id="" placeholder="BirthDate ..."
-                        value="<%= Employee.birthDate %> ">
-                    <br>
-                </div>
-                <div class="col">
-                    <select name="driverLicence" id="" class="form-select">
-                        <option value="" selected disabled>Do you have a driver Licence?</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select> <br>
-                    <select name="Gender" id="" class="form-select">
-                        <option value="" selected disabled>Select Your Gender ...</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select> <br>
-                    <select name="userRole" id="" class="form-select">
-                        <option value="" disabled selected>Employee Role ...</option>
-                        <option value="Employee">Employee</option>
-                        <option value="Admin">Admin</option>
-                        <option value="HOD">HOD</option>
-                        <option value="HR">HR</option>
-                    </select> <br>
-                    <input class="form-control" placeholder="Nationality.." type="text" name="Nationality"
-                        value="<%= Employee.Nationality %> "> <br>
 
-                    <input class="form-control" placeholder="Location.." type="text" name="Location" id=""
-                        value="<%= Employee.Location %> "> <br>
+        <div class="row flex-lg-nowrap">
+            <div class="col">
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/Employee/<%= Employee._id %>?_method=PUT" method="post">
+                                    <div class="e-profile">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-auto mb-3"></div>
+                                            <div
+                                                class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
+                                                        <%= `${Employee.Firstname} ${Employee.Lastname}` %>
+                                                    </h4>
+                                                    <p class="mb-0">
+                                                        @<%= Employee.username %>
+                                                    </p>
+                                                    <!-- <div class="text-muted"><small>
+                                                       
+                                                    </small></div> -->
+                                                </div>
+                                                <div class="text-center text-sm-right">
+                                                    <span class="badge badge-secondary text-info">
+                                                        <%= Employee.userRole %>
+                                                    </span>
+                                                    <div class="text-muted"><small>
+                                                            Joined <%= moment(Employee.join).format('Do MMM YYYY') %>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Firstname</label>
+                                                                    <input class="form-control" type="text"
+                                                                        name="Firstname"
+                                                                        value="<%= Employee.Firstname %> ">
+                                                                    <label>Lastname</label>
+                                                                    <input class="form-control" type="text"
+                                                                        name="Lastname"
+                                                                        value="<%= Employee.Lastname %> ">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Phone</label>
+                                                                    <input class="form-control" type="text" name="Phone"
+                                                                        value="<%= Employee.Phone %>">
+                                                                    <label>Email</label>
+                                                                    <input class="form-control" type="text" name="Email"
+                                                                        value="<%= Employee.Email %> ">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col mb-3">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+
+                                                                        <div class="col">
+                                                                            <label for="">Driver Licence</label>
+                                                                            <select name="driverLicence"
+                                                                                class="form-select">
+                                                                                <option value="" selected disabled>...
+                                                                                </option>
+                                                                                <option value="Yes">Yes</option>
+                                                                                <option value="No">No</option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class="col">
+                                                                            <label for="">Location</label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Location"
+                                                                                value="<%= Employee.Location %> ">
+                                                                        </div>
+                                                                    </div>
+                                                                    <% if(currentUser.userRole=='Admin' ){ %>
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <label for="level"
+                                                                                    class="text-muted">Role</label>
+                                                                                <div class="form-button">
+                                                                                    <select class="nice-select"
+                                                                                        name="userRole" required>
+                                                                                        <option disabled selected>
+                                                                                            <%= Employee.userRole %>
+                                                                                        </option>
+                                                                                        <option value="Admin">Admin
+                                                                                        </option>
+                                                                                        <option value="HR">HR
+                                                                                        </option>
+                                                                                        <option value="HOD">HOD
+                                                                                        </option>
+                                                                                        <option value="Employee">
+                                                                                            Employee</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <label for="">Job
+                                                                                    Description</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    name="JD"
+                                                                                    value="<%= Employee.JD %> ">
+                                                                            </div>
+                                                                        </div>
+                                                                        <% } %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col d-flex justify-content-end">
+                                                        <button type="submit" class="btn btn-outline-success">Save
+                                                            Changes</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success" style="width: 100%;">Edit</button>
-        </form>
+        </div>
+
     </div>

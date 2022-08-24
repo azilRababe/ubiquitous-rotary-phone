@@ -7,18 +7,26 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                        class="rounded-circle" width="150">
+                                    <!-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                        class="rounded-circle" width="150"> -->
                                     <div class="mt-3">
-                                        <h4>
-                                            <%= `${Employee.Firstname} ${Employee.Lastname}` %>
+                                        <h4 class="text-danger">
+                                            <%= `${Employee.Firstname.toUpperCase()} ${Employee.Lastname.toUpperCase()}`
+                                                %>
                                         </h4>
                                         <p class="text-secondary mb-1">
-                                            <%= Employee.JD %>
+                                            <small>
+                                                <%= Employee.JD %>
+                                            </small>
                                         </p>
                                         <p class="text-muted font-size-sm">
-                                            <%= Employee.location %>
+                                            <small>
+                                                joined <%= moment(Employee.join).format('Do MMM YYYY'); %>
+                                            </small>
                                         </p>
+                                        <a href="/Employee/<%=Employee._id%>/edit">
+                                            <button class="btn btn-outline-primary">Sittings</button>
+                                        </a>
                                         <a href="/logout">
                                             <button class="btn btn-outline-danger">Logout</button>
                                         </a>
@@ -91,6 +99,15 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
+                                        <h6 class="mb-0">Birhtdate</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <%= moment(Employee.birthDate).format("MMM Do YY"); %>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <h6 class="mb-0">Address</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
@@ -106,13 +123,9 @@
                                         <%= Employee.userRole %>
                                     </div>
                                 </div>
-                                <hr>
+
                                 <div class="d-flex justify-content-start">
                                     <div class="row">
-                                        <div class="col">
-                                            <a class="btn btn-outline-success "
-                                                href="/Employee/<%= Employee._id %>/edit ">Edit</a>
-                                        </div>
                                         <% if(currentUser.userRole !='Admin' ){ %>
                                             <div class="col">
                                                 <a class="btn btn-outline-primary" href="/Leave/new">Leave</a>

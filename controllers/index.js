@@ -33,11 +33,6 @@ module.exports.login = async (req, res) => {
                             username: Employees.username
                         }, process.env.SECRET,
                             { expiresIn: '24h' })
-                        // if (req.user.userRole == 'Admin' || req.user.userRole == 'HR') {
-                        //     res.render('User/admin')
-                        // } else {
-                        //     res.send('you have limited access')
-                        // }
                         req.flash('success_msg', 'Welcome to your dashboard')
                         return res.redirect(`/Profil/${Employees._id}`)
                     }

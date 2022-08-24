@@ -5,7 +5,13 @@ const Employees = require('../models/Employees'),
 
 module.exports.index = async (req, res) => {
     const Employee = await Employees.find({})
-    res.render('Employee/index', { Employee })
+        .populate('projectId')
+        .populate('leaveId')
+        .populate('taksId')
+        .exec((err, Employee) => {
+            if (err) { res.status(404).json({ err: err }) }
+            res.render('Employee/index', { Employee })
+        })
 }
 
 module.exports.renderNewForm = (req, res) => {
@@ -35,12 +41,12 @@ module.exports.showEmployee = async (req, res) => {
     return res.render('Employee/Show', { Employee })
 }
 
-module.exports.updateEmployee = async (err, req, res) => {
+module.exports.updateEmployee = async (req, res) => {
+    // const id = req.params.id
     const body = req.body
     const Employee = await Employees.findByIdAndUpdate(req.params.id, body)
-    if (err) { res.status(404).json({ message: 'Something went wrong' }) }
-    req.flash('success_msg', 'Data has been updated successfully')
-    res.redirect(`/Employee`)
+    req.flash('success_msg', 'Changes saved successfully')
+    return res.redirect(`/Employee/${Employee._id}`)
 }
 
 module.exports.editForm = async (req, res) => {

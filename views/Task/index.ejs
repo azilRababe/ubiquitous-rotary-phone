@@ -13,7 +13,9 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Id </th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Assigner</th>
+                        <th scope="col">Starts</th>
                         <th scope="col">Due Date</th>
                         <th scope="col">Status</th>
                         <th>Actions</th>
@@ -23,14 +25,23 @@
                     <% for(let Tsk of Task){ %>
                         <tr>
                             <td>
-                                <%= Tsk.taskId %>
+                                <%= Tsk._id %>
                             </td>
 
+                            <td>
+                                <% Tsk.assignerId.forEach(e=>{%>
+                                    <%= `${e.Firstname} ${e.Lastname}` %>
+                                        <% }) %>
+                            </td>
+
+                            <td>
+                                <%= moment(Tsk.startDate).format('LL') %>
+                            </td>
                             <td>
                                 <%= moment(Tsk.dueDate).format('LL') %>
                             </td>
                             <td>
-                                <%= Tsk.taskStatus %>
+                                <%= Tsk.Status %>
                             </td>
 
                             <td>
