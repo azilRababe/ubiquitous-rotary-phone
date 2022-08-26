@@ -1,15 +1,18 @@
-const { monoogse, default: mongoose } = require("mongoose");
+const { default: mongoose } = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Leaves = new Schema({
   employeeId: {
-    type: [Schema.Types.ObjectId],
+    type: Schema.Types.ObjectId,
     ref: "Employees",
   },
   submissionDate: { type: Date, default: Date.now },
   startDate: Date,
   dueDate: Date,
-  leaveStatus: ["Yes", "No"],
+  leaveStatus: {
+    type: String,
+    enum: ["Yes", "No"],
+  },
   Proof: Buffer,
 });
 

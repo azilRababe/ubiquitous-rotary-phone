@@ -7,14 +7,23 @@ const Employees = new Schema({
   Email: { type: String, unique: true },
   bloodType: String,
   Nationality: String,
-  driverLicence: ["Yes", "No"],
+  driverLicence: {
+    type: String,
+    enum: ["Yes", "No"],
+  },
   birthDate: Date,
-  Gender: ["Male", "Female", "Other"],
+  Gender: {
+    type: String,
+    enum: ["Male", "Female", "Other"],
+  },
   Location: String,
   Firstname: String,
   Lastname: String,
   username: String,
-  userRole: ["Employee", "HOD", "Admin", "HR"],
+  userRole: {
+    type: String,
+    enum: ["Employee", "HOD", "Admin", "HR"],
+  },
   JD: String,
   join: { type: Date, default: Date.now },
   projectId: {

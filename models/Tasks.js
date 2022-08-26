@@ -8,7 +8,10 @@ const Tasks = new Schema({
   startDate: Date,
   dueDate: Date,
   Notes: String,
-  Status: ["Upcoming", "In progress", "Done"],
+  Status: {
+    type: String,
+    enum: ["Upcoming", "In progress", "Done"],
+  },
 });
 
 module.exports = monoogse.model("Tasks", Tasks);

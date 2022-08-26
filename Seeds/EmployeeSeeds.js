@@ -26,7 +26,7 @@ for (let i = 0; i < 10; i += 1) {
     Nationality: faker.address.country(),
     driverLicence: faker.helpers.arrayElement(["Yes", "No"]),
     birthDate: faker.date.birthdate(),
-    Gender: faker.helpers.arrayElement(["Male", "Female", "Ohter"]),
+    Gender: faker.helpers.arrayElement(["Male", "Female", "Other"]),
     Location: faker.address.city(),
     Firstname: Firstname,
     Lastname: Lastname,

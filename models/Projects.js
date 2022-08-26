@@ -7,7 +7,10 @@ const Projects = new Schema({
   startDate: Date,
   dueDate: Date,
   Createdin: { type: Date, Default: Date.now },
-  Status: ["Upcoming", "In progress", "Done"],
+  Status: {
+    type: String,
+    enum: ["Upcoming", "In progress", "Done"],
+  },
   createdBy: String,
 });
 

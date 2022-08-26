@@ -2,13 +2,16 @@ const mongoose = require("mongoose"),
   schema = mongoose.Schema;
 
 const Departments = new schema({
-  Name: [
-    "Marketing",
-    "Finance",
-    " Operations management",
-    " Human Resource",
-    "IT",
-  ],
+  Name: {
+    type: String,
+    enum: [
+      "Marketing",
+      "Finance",
+      " Operations management",
+      " Human Resource",
+      "IT",
+    ],
+  },
   HOD: {
     type: [schema.Types.ObjectId],
     ref: "Employees",
