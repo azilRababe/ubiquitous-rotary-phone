@@ -1,146 +1,145 @@
 body,
 html {
-    height: 100%;
-    width: 100%;
-    font-family: 'Uchen', serif;
-    background-color: #e9ecef;
-    font-size: 1rem;
-    overflow-x: hidden !important;
-    /* margin-top: 35px; */
+  height: 100%;
+  width: 100%;
+  font-family: "Uchen", serif;
+  background-color: #e9ecef;
+  font-size: 1rem;
+  overflow-x: hidden !important;
+  /* margin-top: 35px; */
 }
 
 .container {
-    margin-top: 55px;
+  margin-top: 55px;
 }
 
 .inlineBlock {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 }
 
 .main-body {
-    padding: 15px;
+  padding: 15px;
 }
 
 .card {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid rgba(0, 0, 0, .125);
-    border-radius: .25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
 
 .card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1rem;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
 }
 
 .gutters-sm {
-    margin-right: -8px;
-    margin-left: -8px;
+  margin-right: -8px;
+  margin-left: -8px;
 }
 
-.gutters-sm>.col,
-.gutters-sm>[class*=col-] {
-    padding-right: 8px;
-    padding-left: 8px;
+.gutters-sm > .col,
+.gutters-sm > [class*="col-"] {
+  padding-right: 8px;
+  padding-left: 8px;
 }
 
 .mb-3,
 .my-3 {
-    margin-bottom: 1rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .bg-gray-300 {
-    background-color: #e2e8f0;
+  background-color: #e2e8f0;
 }
 
 .h-100 {
-    height: 100% !important;
+  height: 100% !important;
 }
 
 .shadow-none {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 /* page transition */
 .animate-in {
-    -webkit-animation: fadeIn .2s ease-in;
-    animation: fadeIn .2s ease-in;
+  -webkit-animation: fadeIn 0.2s ease-in;
+  animation: fadeIn 0.2s ease-in;
 }
 
 .animate-out {
-    -webkit-transition: opacity .5s;
-    transition: opacity .5s;
-    opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 
 @-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
-
 
 /* add */
 body {
-    background-color: #eee;
-    margin-top: 20px;
+  background-color: #eee;
+  margin-top: 20px;
 }
 
 .job-detail {
-    border: 1px solid #ececec;
-    border-radius: 6px;
-    background-color: #fff;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+  background-color: #fff;
 }
 
 .form-button .nice-select {
-    width: 100%;
-    height: 39px;
-    line-height: 37px;
-    color: #6b757d;
-    margin-bottom: 1rem;
-    border: solid 1px #e9e9e9;
+  width: 100%;
+  height: 39px;
+  line-height: 37px;
+  color: #6b757d;
+  margin-bottom: 1rem;
+  border: solid 1px #e9e9e9;
 }
 
 .resume-user {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    font-size: 66px;
-    border-radius: 50px;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    background-color: #e9e9e9;
-    color: #ff4f6c;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    text-align: center;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 66px;
+  border-radius: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: #e9e9e9;
+  color: #ff4f6c;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  text-align: center;
 }

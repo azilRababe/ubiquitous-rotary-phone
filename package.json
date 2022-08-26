@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "thka": "prettier --write ."
   },
   "husky": {
     "hooks": {
