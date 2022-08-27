@@ -1,12 +1,10 @@
 const Projects = require("../models/Projects");
 
 module.exports.index = async (req, res) => {
-  const Project = await Projects.find({})
+  Projects.find({})
     .populate({ path: "employeeId", select: "Firstname Lastname -_id" })
     .exec((err, Project) => {
-      if (err) {
-        res.json({ err: err });
-      }
+      if (err) res.json({ err: err });
       res.render("Project/index", { Project });
     });
 };
@@ -24,7 +22,7 @@ module.exports.createProject = async (req, res) => {
 };
 
 module.exports.showProject = async (req, res) => {
-  const Project = await Projects.findById({ _id: req.params.id })
+  Projects.findById({ _id: req.params.id })
     .populate({ path: "employeeId", select: "Firstname Lastname" })
     .exec((err, Project) => {
       if (err) {
@@ -36,7 +34,7 @@ module.exports.showProject = async (req, res) => {
 
 module.exports.updateProject = async (req, res) => {
   const body = req.body;
-  const Project = await Projects.findByIdAndUpdate(req.params.id, body);
+  await Projects.findByIdAndUpdate(req.params.id, body);
   req.flash("success_msg", "Changes saved successfully");
   res.redirect(`/Project`);
 };

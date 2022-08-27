@@ -4,9 +4,7 @@ module.exports.index = async (req, res) => {
   const Leave = await Leaves.find({})
     .populate({ path: "employeeId", select: "Firstname Lastname -_id" })
     .exec((err, Leave) => {
-      if (err) {
-        req.flash("error", "Something went wrong");
-      }
+      if (err) req.flash("error", "Something went wrong");
       res.render("Leave/index", { Leave });
     });
 };

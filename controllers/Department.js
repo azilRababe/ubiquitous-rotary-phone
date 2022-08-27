@@ -1,7 +1,7 @@
 const Departments = require("../models/Departments");
 
 module.exports.index = async (req, res) => {
-  const Department = await Departments.find({})
+  Departments.find({})
     .populate({ path: "HOD", select: "Firstname Lastname -_id" })
     .populate({ path: "Employees", select: "Firstname Lastname -_id" })
     .exec((err, Department) => {
@@ -20,7 +20,7 @@ module.exports.deleteDep = async (req, res) => {
 
 module.exports.updateDep = async (req, res) => {
   const body = req.body;
-  const Department = await Departments.findByIdAndUpdate(req.params.id, body)
+  Departments.findByIdAndUpdate(req.params.id, body)
     .populate("HOD")
     .populate("Employees")
     .exec((err, Department) => {
@@ -34,7 +34,7 @@ module.exports.updateDep = async (req, res) => {
 
 module.exports.editForm = async (req, res) => {
   const { id } = req.params;
-  const Department = await Departments.findById({ _id: id })
+  Departments.findById({ _id: id })
     .populate({ path: "HOD", select: "Firstname Lastname Email -_id" })
     .populate({ path: "Employees", select: "Firstname Lastname -_id" })
     .exec((err, Department) => {

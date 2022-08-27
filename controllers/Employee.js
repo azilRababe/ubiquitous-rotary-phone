@@ -4,7 +4,7 @@ const Employees = require("../models/Employees"),
   bcrypt = require("bcryptjs");
 
 module.exports.index = async (req, res) => {
-  const Employee = await Employees.find({})
+  Employees.find({})
     .populate("projectId")
     .populate("leaveId")
     .populate("taksId")
@@ -36,11 +36,9 @@ module.exports.createEmployee = async (req, res) => {
 
 module.exports.showEmployee = async (req, res) => {
   const Employee = await Employees.findById({ _id: req.params.id });
-  if (!Employee) {
-    req.flash("error_msg", "Employee not found");
-    return res.redirect(`/Profil/${req.user.id}`);
-  }
-  return res.render("Employee/Show", { Employee });
+  if (Employee) return res.render("Employee/Show", { Employee });
+  req.flash("error_msg", "Employee not found");
+  return res.redirect(`/Profil/${req.user.id}`);
 };
 
 module.exports.updateEmployee = async (req, res) => {
@@ -54,10 +52,8 @@ module.exports.updateEmployee = async (req, res) => {
 module.exports.editForm = async (req, res) => {
   const { id } = req.params;
   const Employee = await Employees.findById({ _id: id });
-  if (!Employee) {
-    res.status(404).json({ message: "Employee not found" });
-  }
-  res.render("Employee/edit", { Employee });
+  if (!Employee) return res.status(404).json({ message: "Employee not found" });
+  return res.render("Employee/edit", { Employee });
 };
 
 module.exports.deleteEmployee = async (req, res) => {

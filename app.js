@@ -13,8 +13,6 @@ const express = require("express"),
   path = require("path"),
   Employee = require("./models/Employees");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(methodOverride("_method"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
