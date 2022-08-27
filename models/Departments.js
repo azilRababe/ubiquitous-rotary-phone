@@ -7,8 +7,8 @@ const Departments = new schema({
     enum: [
       "Marketing",
       "Finance",
-      " Operations management",
-      " Human Resource",
+      "Operations management",
+      "Human Resource",
       "IT",
     ],
   },

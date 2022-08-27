@@ -1,5 +1,6 @@
 const express = require("express"),
   router = express.Router(),
+  Employees = require("../models/Employees"),
   Employee = require("../controllers/Employee"),
   { isLoggedIn } = require("../middlewares/middleware");
 
