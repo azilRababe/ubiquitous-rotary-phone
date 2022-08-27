@@ -1,7 +1,6 @@
-const { default: mongoose } = require("mongoose"),
-  express = require("express"),
+require("dotenv").config();
+const express = require("express"),
   app = express(),
-  dotenv = require("dotenv").config(),
   bodyParser = require("body-parser"),
   flash = require("connect-flash"),
   cookieParser = require("cookie-parser"),
@@ -12,8 +11,7 @@ const { default: mongoose } = require("mongoose"),
   passport = require("passport"),
   db = require("./config/db"),
   path = require("path"),
-  Employee = require("./models/Employees"),
-  jwt = require("jsonwebtoken");
+  Employee = require("./models/Employees");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

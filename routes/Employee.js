@@ -1,8 +1,7 @@
 const express = require("express"),
   router = express.Router(),
-  Employees = require("../models/Employees"),
   Employee = require("../controllers/Employee"),
-  { isLoggedIn, authRole } = require("../middlewares/middleware");
+  { isLoggedIn } = require("../middlewares/middleware");
 
 router.route("/").get(isLoggedIn, Employee.index).post(Employee.createEmployee);
 
