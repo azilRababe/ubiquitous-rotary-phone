@@ -1,10 +1,12 @@
 const Departments = require("../models/Departments");
 
 const isLoggedIn = async (req, res, next) => {
-  if (req.isAuthenticated()) next();
-  req.session.returnTo = req.originalUrl;
-  req.flash("error", "You must be signed in first!");
-  return res.redirect("/login");
+  if (!req.isAuthenticated()) {
+    req.session.returnTo = req.originalUrl;
+    req.flash("error", "You must be signed in first!");
+    return res.redirect("/login");
+  }
+  next();
 };
 
 const authRole = async (Role) => async (req, res, next) => {
@@ -15,14 +17,5 @@ const authRole = async (Role) => async (req, res, next) => {
   if (userDepartement) next();
   return res.json({ message: "You are not allowed to see this content" });
 };
-
-// function authRole(Role) {
-//   return (req, res, next) => {
-//     if (req.user.userRole != Role && req.user.userRole != "Admin") {
-//       res.json({ message: "You are not allowed to see this content" });
-//     }
-//     next();
-//   };
-// }
 
 module.exports = { isLoggedIn, authRole };

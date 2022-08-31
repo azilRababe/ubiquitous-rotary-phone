@@ -13,14 +13,16 @@ const Departments = new schema({
     ],
   },
   HOD: {
-    type: [schema.Types.ObjectId],
+    type: schema.Types.ObjectId,
     ref: "Employees",
   },
   Employees: {
     type: [schema.Types.ObjectId],
     ref: "Employees",
   },
-  Description: String,
+  Description: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Departments", Departments);

@@ -5,13 +5,13 @@ const Department = require("../models/Departments"),
 const { default: mongoose } = require("mongoose");
 
 let Departments = [];
-for (let i = 0; i < 10; i += 1) {
+for (let i = 0; i < 5; i += 1) {
   let newDepartment = {
     Name: faker.helpers.arrayElement([
       "Marketing",
       "Finance",
-      " Operations management",
-      " Human Resource",
+      "Operations management",
+      "Human Resource",
       "IT",
     ]),
     HOD: faker.database.mongodbObjectId(),

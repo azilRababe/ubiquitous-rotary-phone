@@ -7,7 +7,7 @@ const Employee = require("../models/Employees"),
 const { default: mongoose } = require("mongoose");
 
 let Employees = [];
-for (let i = 0; i < 10; i += 1) {
+for (let i = 0; i < 5; i += 1) {
   const Firstname = faker.name.firstName();
   const Lastname = faker.name.lastName();
   let newEmployee = {
@@ -40,7 +40,7 @@ for (let i = 0; i < 10; i += 1) {
   Employees.push(newEmployee);
 }
 const seedDB = async () => {
-  await Employee.deleteMany({});
+  // await Employee.deleteMany({});
   await Employee.insertMany(Employees);
 };
 

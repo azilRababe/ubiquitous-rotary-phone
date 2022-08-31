@@ -5,14 +5,14 @@ const Project = require("../models/Projects"),
 const { default: mongoose } = require("mongoose");
 
 let Projects = [];
-for (let i = 0; i < 10; i += 1) {
+for (let i = 0; i < 5; i += 1) {
   let newProject = {
     employeeId: faker.database.mongodbObjectId(),
     Title: faker.random.word(),
-    startEnd: faker.date.future(),
+    startDate: faker.date.future(),
     dueDate: faker.date.future(),
     Status: faker.helpers.arrayElement(["Upcoming", "In progress", "Done"]),
-    createdBy: faker.name.findName(),
+    createdBy: faker.name.fullName(),
   };
   Projects.push(newProject);
 }

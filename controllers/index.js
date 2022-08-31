@@ -4,8 +4,10 @@ const Employees = require("../models/Employees"),
   bcrypt = require("bcryptjs");
 
 module.exports.Profil = async (req, res) => {
-  const Employee = await Employees.findById({ _id: req.params.id });
-  res.render(`User/Profil`, { Employee });
+  const Employee = await Employees.findById({ _id: req.params.id })
+    .populate("projectId")
+    .populate("taskId")
+    .exec((err, Employee) => res.render(`User/Profil`, { Employee }));
 };
 
 module.exports.getLogin = (req, res) => {

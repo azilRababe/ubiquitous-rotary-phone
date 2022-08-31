@@ -13,6 +13,7 @@ router.get("/new", isLoggedIn, Leave.renderNewForm);
 
 router
   .route("/:id")
+  .get(isLoggedIn, Leave.showLeave)
   .put(isLoggedIn, Leave.updateLeave)
   .delete(isLoggedIn, Leave.deleteLeave);
 

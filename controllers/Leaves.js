@@ -1,41 +1,46 @@
 const Leaves = require("../models/Leaves");
 
-module.exports.index = async (req, res) => {
-  const Leave = await Leaves.find({})
-    .populate({ path: "employeeId", select: "Firstname Lastname -_id" })
-    .exec((err, Leave) => {
-      if (err) req.flash("error", "Something went wrong");
-      res.render("Leave/index", { Leave });
-    });
-};
+// Create - Read - Update - Delete
 
-module.exports.renderNewForm = (req, res) => {
-  res.render("Leave/new");
-};
-
+module.exports.renderNewForm = (req, res) => res.render("Leave/New");
 module.exports.createLeave = async (req, res) => {
-  const body = req.body;
-  const Leave = new Leaves(body);
+  const Leave = new Leaves(req.body);
   if (Leave.dueDate < Leave.startDate) {
     req.flash("error", "The due date should be greater than the start data");
-    return res.redirect("/Leave/new");
+    return res.redirect("/Leave/New");
   }
   Leave.save();
   req.flash("success_msg", "New Leave has been added successfully");
   res.redirect("/Leave");
 };
 
-module.exports.updateLeave = async (req, res) => {
-  const body = req.body;
-  const Leave = await Leaves.findByIdAndUpdate(req.params.id, body);
-  req.flash("success_msg", "Changes saved successfully");
-  res.redirect("/Leave");
+module.exports.showLeave = async (req, res) => {
+  Leaves.findById({ _id: req.params.id })
+    .populate("employeeId")
+    .exec((err, Leave) => {
+      if (err) return res.json({ err: err });
+      return res.render("Leave/Show", { Leave });
+    });
+};
+module.exports.index = async (req, res) => {
+  Leaves.find({}).exec((err, Leave) => {
+    if (err) return res.json({ err: err });
+    return res.render("Leave/Index", { Leave });
+  });
 };
 
 module.exports.editForm = async (req, res) => {
-  const { id } = req.params;
-  const Leave = await Leaves.findById({ _id: id });
-  res.render("Leave/edit", { Leave });
+  Leaves.findById({ _id: req.params.id })
+    .populate("employeeId")
+    .exec((err, Leave) => {
+      if (err) res.json({ err: err });
+      res.render("Leave/Edit", { Leave });
+    });
+};
+module.exports.updateLeave = async (req, res) => {
+  Leaves.findByIdAndUpdate(req.params.id, req.body);
+  req.flash("success_msg", "Changes saved successfully");
+  res.redirect("/Leave");
 };
 
 module.exports.deleteLeave = async (req, res) => {

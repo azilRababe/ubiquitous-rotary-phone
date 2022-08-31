@@ -1,18 +1,16 @@
-<%- include('../partials/header') %> <br>
+<%- include('../partials/header') %>
     <div class="container ">
         <div class="main-body">
             <div class="row gutters-sm">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="text-danger border-bottom border-danger my-3">
-                            <%= Task.assignerId %>
-                        </h5>
+                        <h5 class="text-danger border-bottom border-danger my-3"></h5>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Assigned To</h6>
+                                <h6 class="mb-0">Employee</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <%= Task.assignedTo %>
+                                <%= Leave.employeeId %>
                             </div>
                         </div>
                         <hr>
@@ -21,7 +19,7 @@
                                 <h6 class="mb-0">Submission Date</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <%= moment(Task.assignDate).format('LL') %>
+                                <%= moment(Leave.submissionDate).format('LL') %>
                             </div>
                         </div>
                         <hr>
@@ -30,7 +28,7 @@
                                 <h6 class="mb-0">Starts</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <%= moment(Task.startDate).format('LL') %>
+                                <%= moment(Leave.startDate).format('LL') %>
                             </div>
                         </div>
                         <hr>
@@ -39,7 +37,7 @@
                                 <h6 class="mb-0">Due date</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <%= moment(Task.dueDate).format('LL') %>
+                                <%= Leave.dueDate %>
                             </div>
                         </div>
                         <hr>
@@ -48,18 +46,10 @@
                                 <h6 class="mb-0">Status</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <%= Task.Status %>
+                                <%= Leave.leaveStatus %>
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Notes</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <%= Task.Notes %>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 

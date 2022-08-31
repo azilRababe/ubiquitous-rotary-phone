@@ -1,0 +1,64 @@
+<%- include('../partials/header') %> <br>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.9.95/css/materialdesignicons.css"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"
+        integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+        integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+
+    <div class="container">
+        <form action="/Department" method="post">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="job-detail mt-2 p-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-5 text-danger text-center">
+                                    <i class="fa-solid fa-building"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="custom-form">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="" class="text-muted">Name</label>
+                                        <input id="" name="Name" type="text" class="form-control resume"
+                                            placeholder="Name" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="" class="text-muted">Head of Department</label>
+                                        <input type="text" name="HOD" class="form-control resume" placeholder="HOD"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="s" class="text-muted">Employees</label>
+                                        <input name="Employees" type="text" class="form-control resume"
+                                            placeholder="Employees" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group app-label">
+                                        <label for="" class="text-muted">Description</label>
+                                        <input type="text" class="form-control resume" name="Description"
+                                            placeholder="Description">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>

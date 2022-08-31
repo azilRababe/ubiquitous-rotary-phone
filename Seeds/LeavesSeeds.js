@@ -5,7 +5,7 @@ const Leave = require("../models/Leaves"),
 const { default: mongoose } = require("mongoose");
 
 let Leaves = [];
-for (let i = 0; i < 10; i += 1) {
+for (let i = 0; i < 5; i += 1) {
   let newLeave = {
     employeeId: faker.database.mongodbObjectId(),
     startDate: faker.date.future(),

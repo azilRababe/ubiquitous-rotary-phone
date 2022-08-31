@@ -11,13 +11,11 @@
                                     <div class="e-profile">
                                         <div class="row">
                                             <small class="text-end text-danger">
-                                                <% Task.assignerId.forEach(e=>{ %>
-                                                    Created by <%= `${e.Firstname} ${ e.Lastname}` %>
-                                                        <% }) %>
-                                                            <br>
-                                                            <span class="text-dark">
-                                                                <%= moment(Task.assignDate,'YYYYMMDD').fromNow() %>
-                                                            </span>
+                                                <% Task.assignerId %>
+                                                    <br>
+                                                    <span class="text-dark">
+                                                        <%= moment(Task.assignDate,'YYYYMMDD').fromNow() %>
+                                                    </span>
                                             </small>
                                         </div>
                                         <ul class="nav nav-tabs">

@@ -7,13 +7,13 @@ const Leaves = new Schema({
     ref: "Employees",
   },
   submissionDate: { type: Date, default: Date.now },
-  startDate: Date,
-  dueDate: Date,
+  startDate: { type: Date },
+  dueDate: { type: Date },
   leaveStatus: {
     type: String,
     enum: ["Yes", "No"],
   },
-  Proof: Buffer,
+  Proof: { type: Buffer },
 });
 
 module.exports = mongoose.model("Leaves", Leaves);

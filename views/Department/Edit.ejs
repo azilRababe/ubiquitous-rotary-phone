@@ -15,19 +15,10 @@
                                                 class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                                 <div class="text-center text-sm-left mb-2 mb-sm-0">
                                                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">
-                                                        <% Department.HOD.forEach(e=> { %>
-                                                            <%= `${e.Firstname} ${e.Lastname}` %> <br>
-                                                                <% }); %>
-
+                                                        <%= Department.Name %>
                                                     </h4>
                                                     <p class="mb-0">
-                                                        <% Department.HOD.forEach(e=> { %>
-                                                            <%= `${e.Email}` %> <br>
-                                                                <% }); %>
-                                                    </p>
-                                                    <!-- <div class="text-muted"><small>
-                                                       
-                                                    </small></div> -->
+                                                        <%= Department.HOD %>
                                                 </div>
                                                 <div class="text-center text-sm-right">
                                                     <span class="badge badge-secondary text-info">
@@ -66,8 +57,16 @@
                                                         <div class="row">
                                                             <div class="form-group">
                                                                 <label>Employees</label>
-                                                                <input type="text" name="Employees" class="form-control"
-                                                                    placeholder="Add Employees">
+                                                                <select name="Employees" id="" class="form-select"
+                                                                    multiple>
+                                                                    <% Department.Employees.forEach(e=>{ %>
+                                                                        <option value="">
+                                                                            <%= `${e.Firstname} ${e.Lastname}` %>
+                                                                        </option>
+                                                                        <% }) %>
+
+                                                                </select>
+
                                                             </div>
                                                         </div>
 

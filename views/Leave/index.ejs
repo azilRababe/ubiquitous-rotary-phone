@@ -25,9 +25,7 @@
                     <% for(let Lv of Leave){ %>
                         <tr>
                             <td>
-                                <% Lv.employeeId.forEach(e=> { %>
-                                    <%= `${e.Firstname} ${e.Lastname}` %> <br>
-                                        <% }); %>
+                                <%= Lv.employeeId%>
                             </td>
                             <td>
                                 <%= moment(Lv.startDate).format('L')%>
@@ -56,6 +54,8 @@
                                                 </form>
                                                 <a href="/Leave/<%= Lv._id %>/edit" class="btn btn-outline-success"><i
                                                         class="fa-solid fa-wrench"></i></a>
+                                                <a href="/Leave/<%= Lv._id %> " class="btn btn-outline-primary"><i
+                                                        class="fa-solid fa-eye"></i></a>
                                             </div>
                                         </td>
                         </tr>

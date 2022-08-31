@@ -4,9 +4,12 @@ const express = require("express"),
   Employee = require("../controllers/Employee"),
   { isLoggedIn } = require("../middlewares/middleware");
 
-router.route("/").get(isLoggedIn, Employee.index).post(Employee.createEmployee);
+router
+  .route("/")
+  .get(isLoggedIn, Employee.index)
+  .post(isLoggedIn, Employee.createEmployee);
 
-router.get("/new", Employee.renderNewForm);
+router.get("/new", isLoggedIn, Employee.renderNewForm);
 
 router
   .route("/:id")

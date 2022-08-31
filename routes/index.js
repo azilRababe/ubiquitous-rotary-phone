@@ -9,6 +9,6 @@ router.route("/Profil/:id").get(isLoggedIn, index.Profil);
 
 router.route("/login").get(index.getLogin).post(index.login);
 
-router.route("/logout").get(index.logout);
+router.route("/logout").get(isLoggedIn, index.logout);
 
 module.exports = router;

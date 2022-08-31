@@ -3,10 +3,10 @@ const mongoose = require("mongoose"),
   passportLocalMongoose = require("passport-local-mongoose");
 
 const Employees = new Schema({
-  Phone: String,
+  Phone: { type: String },
   Email: { type: String, unique: true },
-  bloodType: String,
-  Nationality: String,
+  bloodType: { type: String },
+  Nationality: { type: String },
   driverLicence: {
     type: String,
     enum: ["Yes", "No"],
@@ -16,26 +16,26 @@ const Employees = new Schema({
     type: String,
     enum: ["Male", "Female", "Other"],
   },
-  Location: String,
-  Firstname: String,
-  Lastname: String,
-  username: String,
+  Location: { type: String },
+  Firstname: { type: String },
+  Lastname: { type: String },
+  username: { type: String },
   userRole: {
     type: String,
     enum: ["Employee", "HOD", "Admin", "HR"],
   },
-  JD: String,
+  JD: { type: String },
   join: { type: Date, default: Date.now },
   projectId: {
-    type: Schema.Types.ObjectId,
+    type: [Schema.Types.ObjectId],
     ref: "Projects",
   },
   leaveId: {
-    type: Schema.Types.ObjectId,
+    type: [Schema.Types.ObjectId],
     ref: "Leaves",
   },
-  taksId: {
-    type: Schema.Types.ObjectId,
+  taskId: {
+    type: [Schema.Types.ObjectId],
     ref: "Tasks",
   },
 });

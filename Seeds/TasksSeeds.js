@@ -5,7 +5,7 @@ const Task = require("../models/Tasks"),
 const { default: mongoose } = require("mongoose");
 
 let Tasks = [];
-for (let i = 0; i < 10; i += 1) {
+for (let i = 0; i < 5; i += 1) {
   let newTask = {
     assignerId: faker.database.mongodbObjectId(),
     assignedTo: faker.database.mongodbObjectId(),

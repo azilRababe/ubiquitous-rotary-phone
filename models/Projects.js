@@ -3,15 +3,15 @@ const mongoose = require("mongoose"),
 
 const Projects = new Schema({
   employeeId: { type: [mongoose.Types.ObjectId], ref: "Employees" },
-  Title: String,
-  startDate: Date,
-  dueDate: Date,
+  Title: { type: String },
+  startDate: { type: Date },
+  dueDate: { type: Date },
   Createdin: { type: Date, Default: Date.now },
   Status: {
     type: String,
     enum: ["Upcoming", "In progress", "Done"],
   },
-  createdBy: String,
+  createdBy: { type: String },
 });
 
 module.exports = mongoose.model("Projects", Projects);
