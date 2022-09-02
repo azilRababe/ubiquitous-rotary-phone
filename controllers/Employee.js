@@ -54,3 +54,23 @@ module.exports.deleteEmployee = async (req, res) => {
   req.flash("success_msg", "Employee has been deleted successfully");
   res.redirect("/Employee");
 };
+
+// generate report
+let ejs = require("ejs-html");
+const path = require("path");
+module.exports.genReport = (req, res) => {
+  ejs.renderFile(
+    path.join(__dirname, "..", "..", "views", "Employee/Show.ejs"),
+    data,
+    {},
+    function (err, str) {
+      if (err) return res.send(err);
+      // str now contains your rendered html
+      pdf.create(str).toFile("report.pdf", function (err, data) {
+        if (err) return res.send(err);
+
+        res.send("File created successfully");
+      });
+    }
+  );
+};

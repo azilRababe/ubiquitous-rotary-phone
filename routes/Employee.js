@@ -18,5 +18,5 @@ router
   .delete(isLoggedIn, Employee.deleteEmployee);
 
 router.get("/:id/edit", isLoggedIn, Employee.editForm);
-
+router.get("/:id/report", isLoggedIn, Employee.genReport);
 module.exports = router;

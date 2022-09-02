@@ -1,5 +1,6 @@
 const Departments = require("../models/Departments");
 
+// user authentification
 const isLoggedIn = async (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.returnTo = req.originalUrl;
@@ -8,7 +9,7 @@ const isLoggedIn = async (req, res, next) => {
   }
   next();
 };
-
+// user Authorization
 const authRole = async (Role) => async (req, res, next) => {
   const userDepartement = await Departments.find({
     Name: Role,

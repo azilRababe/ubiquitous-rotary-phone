@@ -59,9 +59,9 @@ app.use("/Task", require("./routes/Task"));
 app.use("/Leave", require("./routes/Leave"));
 app.use("/Project", require("./routes/Project"));
 
-// app.get('*', (req, res) => {
-//     res.status(404).json({ err: 'Page not found' })
-// })
+app.get("*", (req, res) => {
+  res.render("partials/404");
+});
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
